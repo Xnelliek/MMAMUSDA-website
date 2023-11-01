@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Church Member Registration</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    form {
+      width: 500px;
+      margin: 0 auto;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #000000;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Church Member Registration</h1>
+
+  <form id="registration-form" onsubmit="return submitRegistrationForm()">
+    <input type="text" name="name" placeholder="Name">
+    <input type="email" name="email" placeholder="Email">
+    <input type="tel" name="phone" placeholder="Phone">
+    <input type="text" name="address" placeholder="Address">
+    <select name="role">
+      <option value="member">Member</option>
+      <option value="leader">Leader</option>
+    </select>
+    <input type="checkbox" name="is_leader"> Is Leader
+    <button type="submit">Submit</button>
+  </form>
+  <script>
+   function submitRegistrationForm() {
+  const form = document.querySelector('#registration-form');
+  const formData = new FormData(form);
+
+  // Send the form data to the server.
+  fetch('register.php', {
+    method: 'POST',
+    body: formData,
+  })
+    .then(response => response.json())
+    .then(data => {
+      // Check if registration was successful.
+      if (data.success) {
+        alert("You have successfully registered!");
+        // Optionally, you can reset the form after a successful submission.
+        form.reset();
+      } else {
+        // Handle error.
+        alert("Registration failed. Please try again.");
+      }
+    })
+    .catch(error => {
+      // Handle error.
+      console.error(error); // Log the error for debugging.
+      alert("You have successfully registered!");
+    });
+
+  // Prevent the form from submitting.
+  return false;
+}
+
+  </script>
+  
+  
+</body>
+</html>

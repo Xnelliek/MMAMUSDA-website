@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Church Member Registration</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    form {
+      width: 500px;
+      margin: 0 auto;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #000000;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Church Member Registration</h1>
+  <form method="post" action="process.php">
+    <label for="name">Name:</label>
+    <input type="text" name="name" required><br><br>
+
+    <label for="contact">Contact:</label>
+    <input type="text" name="contact" required><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" required><br><br>
+
+    <label for="academic_year">Academic Year:</label>
+    <select name="academic_year">
+        <option value="Year 1">Year 1</option>
+        <option value="Year 2">Year 2</option>
+        <option value="Year 3">Year 3</option>
+        <option value="Year 4">Year 4</option>
+        <option value="post_graduate">Post Graduate</option>
+        <option value="guest">Guest</option>
+    </select><br><br>
+
+    <label for="role">Role:</label>
+    <select name="role">
+        <option value="Preaching">Preaching</option>
+        <option value="Prophecy">Prophecy</option>
+        <option value="Bible Study">Bible Study</option>
+        <option value="Health">Health</option>
+        <option value="Missionary">Missionary</option>
+    </select><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+  <script>
+   function submitRegistrationForm() {
+  const form = document.querySelector('#registration-form');
+  const formData = new FormData(form);
+
+  // Send the form data to the server.
+  fetch('process.php', {
+    method: 'POST',
+    body: formData,
+  })
+    .then(response => response.json())
+    .then(data => {
+      // Check if registration was successful.
+      if (data.success) {
+        alert("You have successfully registered!");
+        // Optionally, you can reset the form after a successful submission.
+        form.reset();
+      } else {
+        // Handle error.
+        alert("Registration failed. Please try again.");
+      }
+    })
+    .catch(error => {
+      // Handle error.
+      console.error(error); // Log the error for debugging.
+      alert("You have successfully registered!");
+    });
+
+  // Prevent the form from submitting.
+  return false;
+}
+
+  </script>
+  
+  
+</body>
+</html>

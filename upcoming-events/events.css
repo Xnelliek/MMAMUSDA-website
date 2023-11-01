@@ -1,0 +1,40 @@
+body {
+    font-family: sans-serif;
+  }
+  
+  #content {
+    margin: 20px auto;
+    width: 500px;
+  }
+  
+  #events {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #events li {
+    margin-bottom: 10px;
+  }
+  
+  .edit-event-form {
+    display: none;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  input[type="submit"] {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #ccc;
+  }
+  

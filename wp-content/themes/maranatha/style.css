@@ -1,0 +1,5470 @@
+/*
+Theme Name: Maranatha
+Theme URI: http://churchthemes.com/themes/maranatha
+Author: churchthemes.com
+Author URI: http://churchthemes.com
+Description: A church WordPress theme with long homepage and sticky menu.
+Copyright: (c) 2015 churchthemes.com
+License: GNU General Public License v2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: white, light, gray, one-column, responsive-layout, custom-colors, custom-menu, custom-header, editor-style, featured-image-header, featured-images, full-width-template, threaded-comments, translation-ready
+Text Domain: maranatha
+Version: 1.0.3
+*/
+/**********************************************
+ * NOTES
+ **********************************************/
+/*
+
+STYLE CUSTOMIZATION
+
+If you want to edit styles, it is best to use a child theme.
+Theme updates replace original stylesheets so keeping your customizations separate makes updates easier.
+See this guide for more information: http://churchthemes.com/guides/developer/child-theming/
+
+Sass is used to generate style.css (see the /sass directory). You can use Sass but do not have to.
+The .scss files are commented more heavily than this resulting style.css file.
+
+PREFIXES
+
+To prevent conflicts with plugins, everything is prefixed with maranatha- (this theme),
+ctcom- (all churchthemes.com themes) or ctfw- (framework). Those with wp- or no prefix are from WordPress.
+Other prefixes are from third party code.
+
+*/
+/**********************************************
+ * TABLE OF CONTENTS
+ **********************************************/
+/*
+
+1. Normalize
+2. Base Elements
+3. Custom Styles
+4. WordPress Styles
+5. Backgrounds
+6. Layout
+7. Header
+8. Footer
+9. Widgets
+10. Homepage
+11. Entry Styles
+12. Sermons
+13. Events
+14. People
+15. Attachments
+16. Galleries
+17. Comments
+18. Plugins
+19. Editor Styles
+20. Media Queries
+
+*/
+/**********************************************
+ * 1. NORMALIZE
+ **********************************************/
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+img, legend {
+  border: 0;
+}
+
+legend, td, th {
+  padding: 0;
+}
+
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+audio, canvas, progress, video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+[hidden], template {
+  display: none;
+}
+
+a {
+  background-color: transparent;
+}
+
+a:active, a:hover {
+  outline: 0;
+}
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+b, optgroup, strong {
+  font-weight: 700;
+}
+
+dfn {
+  font-style: italic;
+}
+
+h1, .maranatha-h1, .maranatha-home-section-content h2, .maranatha-home-section-content .maranatha-h2, .maranatha-home-section-content #reply-title, #maranatha-comments-title {
+  font-size: 2em;
+  margin: .67em 0;
+}
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -.5em;
+}
+
+sub {
+  bottom: -.25em;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+figure {
+  margin: 1em 40px;
+}
+
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+pre, textarea {
+  overflow: auto;
+}
+
+code, kbd, pre, samp {
+  font-family: monospace,monospace;
+  font-size: 1em;
+}
+
+button, input, optgroup, select, textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+button {
+  overflow: visible;
+}
+
+button, select {
+  text-transform: none;
+}
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+button[disabled], html input[disabled] {
+  cursor: default;
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+input {
+  line-height: normal;
+}
+
+input[type=checkbox], input[type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+input[type=search] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+fieldset {
+  border: 1px solid silver;
+  margin: 0 2px;
+  padding: .35em .625em .75em;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/**********************************************
+ * 2. BASE ELEMENTS
+ **********************************************/
+/*---------------------------------------------
+ * Box Model
+ *--------------------------------------------*/
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/*---------------------------------------------
+ * Text
+ *--------------------------------------------*/
+html {
+  font-size: 100%;
+  line-height: 1.5;
+  color: #444444;
+}
+
+html,
+html a {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}
+
+a {
+  text-decoration: none;
+  font-weight: normal;
+}
+
+h1, .maranatha-h1, .maranatha-home-section-content h2, .maranatha-home-section-content .maranatha-h2, .maranatha-home-section-content #reply-title, #maranatha-comments-title,
+h2,
+.maranatha-h2,
+#reply-title,
+h3,
+.maranatha-nav-block-title,
+h4,
+h5,
+h6 {
+  font-weight: 300;
+  line-height: 1.2;
+  color: black;
+}
+h1 a, .maranatha-h1 a, .maranatha-home-section-content h2 a, .maranatha-home-section-content .maranatha-h2 a, .maranatha-home-section-content #reply-title a, #maranatha-comments-title a,
+h2 a,
+.maranatha-h2 a,
+#reply-title a,
+h3 a,
+.maranatha-nav-block-title a,
+h4 a,
+h5 a,
+h6 a {
+  font-weight: 300;
+}
+
+h1, .maranatha-h1, .maranatha-home-section-content h2, .maranatha-home-section-content .maranatha-h2, .maranatha-home-section-content #reply-title, #maranatha-comments-title {
+  font-size: 3.6em;
+  font-weight: 200;
+}
+h1 a, .maranatha-h1 a, .maranatha-home-section-content h2 a, .maranatha-home-section-content .maranatha-h2 a, .maranatha-home-section-content #reply-title a, #maranatha-comments-title a {
+  font-weight: 200;
+}
+
+#maranatha-content h1, #maranatha-content .maranatha-h1, #maranatha-content .maranatha-home-section-content h2, .maranatha-home-section-content #maranatha-content h2, #maranatha-content .maranatha-home-section-content .maranatha-h2, .maranatha-home-section-content #maranatha-content .maranatha-h2, #maranatha-content .maranatha-home-section-content #reply-title, .maranatha-home-section-content #maranatha-content #reply-title, #maranatha-content #maranatha-comments-title,
+#maranatha-content .maranatha-h1,
+#maranatha-content .maranatha-home-section-content h2,
+.maranatha-home-section-content #maranatha-content h2,
+#maranatha-content .maranatha-home-section-content .maranatha-h2,
+.maranatha-home-section-content #maranatha-content .maranatha-h2,
+#maranatha-content .maranatha-home-section-content #reply-title,
+.maranatha-home-section-content #maranatha-content #reply-title,
+.mce-content-body h1,
+.mce-content-body .maranatha-h1,
+.mce-content-body .maranatha-home-section-content h2,
+.maranatha-home-section-content .mce-content-body h2,
+.mce-content-body .maranatha-home-section-content .maranatha-h2,
+.maranatha-home-section-content .mce-content-body .maranatha-h2,
+.mce-content-body .maranatha-home-section-content #reply-title,
+.maranatha-home-section-content .mce-content-body #reply-title,
+.mce-content-body #maranatha-comments-title {
+  font-size: 2.8em;
+}
+
+h2, .maranatha-h2, #reply-title,
+.maranatha-h2,
+#reply-title {
+  font-size: 1.9em;
+  font-weight: 200;
+}
+h2 a, .maranatha-h2 a, #reply-title a,
+.maranatha-h2 a,
+#reply-title a {
+  font-weight: 200;
+}
+
+h3, .maranatha-nav-block-title,
+.maranatha-h3,
+#maranatha-footer-widgets aside h2,
+#maranatha-footer-widgets aside .maranatha-h2,
+#maranatha-footer-widgets aside #reply-title,
+.maranatha-loop-two-columns .maranatha-entry-short h2,
+.maranatha-loop-two-columns .maranatha-entry-short .maranatha-h2,
+.maranatha-loop-two-columns .maranatha-entry-short #reply-title {
+  font-size: 1.6em;
+}
+
+h4,
+.maranatha-h4,
+.widget_calendar #wp-calendar caption,
+.maranatha-loop-three-columns .maranatha-entry-short h2,
+.maranatha-loop-three-columns .maranatha-entry-short .maranatha-h2,
+.maranatha-loop-three-columns .maranatha-entry-short #reply-title,
+.maranatha-sermon-index-list > li > a,
+#maranatha-sermon-dates-list a {
+  font-size: 1.4em;
+}
+
+h5,
+.maranatha-h5,
+.maranatha-caption-image-title,
+#maranatha-sermon-series-list a {
+  font-size: 1.2em;
+}
+
+h6,
+.maranatha-h6 {
+  font-size: 1em;
+}
+
+b,
+strong {
+  font-weight: 600;
+}
+
+::-moz-selection {
+  background-color: #e5e5e5;
+  color: black;
+}
+
+::selection {
+  background-color: #e5e5e5;
+  color: black;
+}
+
+/*---------------------------------------------
+ * Blocks
+ *--------------------------------------------*/
+ul,
+ol,
+dl {
+  padding: 0;
+}
+
+ul,
+ol {
+  margin-left: 3.125em;
+}
+
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+dl {
+  margin-left: 1.875em;
+}
+
+dt {
+  font-size: 0.9em;
+  font-style: normal;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+dd {
+  margin-bottom: 1.25em;
+  margin-left: 0;
+}
+
+blockquote {
+  display: block;
+  position: relative;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0 0 0 2.5em;
+  font-size: 1.4em;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.5;
+}
+blockquote p {
+  margin-top: 0;
+  margin-bottom: 0.6875em;
+}
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+blockquote:before {
+  position: absolute;
+  top: -0.32em;
+  left: 0;
+  display: block;
+  content: "\201C";
+  font-size: 4em;
+  font-style: normal;
+  font-weight: 600;
+  color: #555;
+}
+.maranatha-body-font-droid-serif blockquote:before, .maranatha-body-font-noto-serif blockquote:before, .maranatha-body-font-source-sans-pro blockquote:before, .maranatha-body-font-tinos blockquote:before {
+  font-size: 3.5em;
+}
+blockquote cite {
+  display: block;
+  margin-top: 1.6875em !important;
+  font-size: 0.6em;
+  font-weight: normal;
+  font-style: normal;
+  text-transform: uppercase;
+}
+blockquote cite:before {
+  content: "\2014 \2009";
+  font-weight: 300;
+}
+
+q {
+  font-style: italic;
+}
+
+.maranatha-entry-content table, .maranatha-compact-content table, .widget_text .textwidget table, .maranatha-comment table,
+.mce-content-body table {
+  width: 100%;
+  border: none;
+}
+
+.maranatha-entry-content caption, .maranatha-compact-content caption, .widget_text .textwidget caption, .maranatha-comment caption,
+.mce-content-body caption {
+  margin-bottom: 1.25em;
+  font-style: italic;
+  text-align: left;
+}
+
+.maranatha-entry-content th, .maranatha-compact-content th, .widget_text .textwidget th, .maranatha-comment th,
+.mce-content-body th {
+  padding: 0 1.5625em 0.3125em 0;
+  text-align: left;
+  font-size: 0.9em;
+  font-style: normal;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.maranatha-entry-content td, .maranatha-compact-content td, .widget_text .textwidget td, .maranatha-comment td,
+.mce-content-body td {
+  padding: 0.3125em 1.5625em 0.3125em 0;
+  font-size: 0.9em;
+}
+
+.maranatha-entry-content td, .maranatha-compact-content td, .widget_text .textwidget td, .maranatha-comment td {
+  border: none;
+}
+
+hr {
+  padding: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 1px 0 0 0;
+  border-color: #e5e5e5;
+  line-height: 0;
+  font-size: 0;
+}
+
+/*---------------------------------------------
+ * Images
+ *--------------------------------------------*/
+img {
+  vertical-align: bottom;
+}
+
+figure {
+  margin-left: 0;
+}
+
+.maranatha-entry-content img, .maranatha-compact-content img, .widget_text .textwidget img, .maranatha-comment img,
+.maranatha-widget img,
+.maranatha-caption-image img,
+img.size-full,
+img.size-large,
+img[class*="align"],
+img[class*="wp-image-"],
+img[class*="attachment-"],
+.maranatha-entry-short-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.25em;
+}
+
+/*---------------------------------------------
+ * Forms
+ *--------------------------------------------*/
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+}
+
+input,
+textarea {
+  margin: 0;
+  font-size: 0.95em;
+  color: #444444;
+  background-color: transparent;
+  border: 1px solid #888888;
+  border-radius: 6px;
+}
+input:focus,
+textarea:focus {
+  border-color: #000;
+}
+
+input {
+  padding: 0 0.9375em;
+  height: 2.5em;
+  line-height: 2.5em;
+  border-radius: 2.5em;
+  outline: 0;
+}
+
+textarea {
+  padding: 0.9375em;
+}
+
+textarea:focus {
+  outline: 0;
+}
+
+input[type=radio],
+input[type=checkbox] {
+  margin-right: 4px;
+  border: 0;
+}
+
+.maranatha-is-ios input:not([type=checkbox]):not([type=radio]),
+.maranatha-is-ios textarea {
+  -webkit-appearance: none;
+}
+
+/**********************************************
+ * 3. CUSTOM STYLES
+ **********************************************/
+/*---------------------------------------------
+ * Text
+ *--------------------------------------------*/
+.maranatha-enlarged, .maranatha-entry-full > .maranatha-entry-content, .maranatha-entry-full > .maranatha-compact-content, .widget_text .maranatha-entry-full > .textwidget, .maranatha-entry-full > .maranatha-comment,
+.archive #maranatha-content-inner > .maranatha-entry-content,
+.archive #maranatha-content-inner > .maranatha-compact-content,
+.archive .widget_text #maranatha-content-inner > .textwidget,
+.widget_text .archive #maranatha-content-inner > .textwidget,
+.archive #maranatha-content-inner > .maranatha-comment,
+.blog #maranatha-content-inner > .maranatha-entry-content,
+.blog #maranatha-content-inner > .maranatha-compact-content,
+.blog .widget_text #maranatha-content-inner > .textwidget,
+.widget_text .blog #maranatha-content-inner > .textwidget,
+.blog #maranatha-content-inner > .maranatha-comment,
+.search #maranatha-content-inner > .maranatha-entry-content,
+.search #maranatha-content-inner > .maranatha-compact-content,
+.search .widget_text #maranatha-content-inner > .textwidget,
+.widget_text .search #maranatha-content-inner > .textwidget,
+.search #maranatha-content-inner > .maranatha-comment, #maranatha-sermon-index-none, .maranatha-sermon-books-testament ul, #maranatha-sermon-dates-list, #maranatha-sermon-series-list, .maranatha-attachment-image {
+  font-size: 1.15em;
+}
+
+.maranatha-light, .maranatha-list-item-count, .maranatha-tooltipster .tooltipster-content, .wp-caption-text, #maranatha-header-archives-section-name, #maranatha-header-archives-section-name a, .maranatha-header-archive-dropdown ul li .maranatha-header-archive-dropdown-count, .widget_search .maranatha-search-button, .maranatha-entry-full-meta-label, .maranatha-entry-short-separator, .maranatha-sermon-download-dropdown-filesize, .maranatha-sermon-dates-count, #maranatha-sermon-series-list .maranatha-sermon-series-count, #maranatha-calendar-title-category, .maranatha-calendar-month-dropdown-months li.maranatha-calendar-month-dropdown-past, .maranatha-calendar-table-day-event-time, .maranatha-comment-title span, .maranatha-comment-time {
+  color: #777777;
+}
+
+dt, blockquote, q, .maranatha-entry-content th, .maranatha-compact-content th, .widget_text .textwidget th, .maranatha-comment th,
+.mce-content-body th, #maranatha-map-section-info p, .maranatha-dropdown li.maranatha-dropdown-selected a, .widget_calendar #wp-calendar caption, .widget_calendar #wp-calendar th, .widget_rss h2 a, .widget_rss .maranatha-h2 a, .widget_rss #reply-title a, .widget_rss .rss-date, .maranatha-dark, #maranatha-sermon-series-list .maranatha-sermon-series-dates, .maranatha-calendar-month-dropdown-year, .maranatha-comment-moderation, #respond label.error, #maranatha-comments-closed, div.wpcf7-mail-sent-ok,
+div.wpcf7-mail-sent-ng,
+div.wpcf7-spam-blocked,
+div.wpcf7-validation-errors, span.wpcf7-not-valid-tip {
+  color: black;
+}
+
+.maranatha-bold {
+  font-weight: 600;
+}
+
+.maranatha-compact-content blockquote, .widget_text .textwidget blockquote, .maranatha-comment blockquote {
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  font-size: 1.3em;
+  text-align: left;
+  box-shadow: none;
+  border: none;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 2.5em;
+  padding-right: 0;
+}
+.maranatha-compact-content blockquote:before, .widget_text .textwidget blockquote:before, .maranatha-comment blockquote:before {
+  position: absolute;
+  top: 0.09em;
+  left: 0.42em;
+  font-size: 3.8em;
+}
+.maranatha-compact-content blockquote:before, .widget_text .textwidget blockquote:before, .maranatha-comment blockquote:before {
+  position: absolute;
+  top: -0.3125em;
+  left: 0;
+}
+.maranatha-compact-content blockquote p, .widget_text .textwidget blockquote p, .maranatha-comment blockquote p {
+  margin-top: 0;
+  margin-bottom: 0.6875em;
+}
+.maranatha-compact-content blockquote p:last-child, .widget_text .textwidget blockquote p:last-child, .maranatha-comment blockquote p:last-child {
+  margin-bottom: 0;
+}
+.maranatha-compact-content h1, .widget_text .textwidget h1, .maranatha-comment h1, .maranatha-compact-content .maranatha-h1, .widget_text .textwidget .maranatha-h1, .maranatha-comment .maranatha-h1, .maranatha-compact-content .maranatha-home-section-content h2, .maranatha-home-section-content .maranatha-compact-content h2, .widget_text .textwidget .maranatha-home-section-content h2, .maranatha-home-section-content .widget_text .textwidget h2, .maranatha-comment .maranatha-home-section-content h2, .maranatha-home-section-content .maranatha-comment h2, .maranatha-compact-content .maranatha-home-section-content .maranatha-h2, .maranatha-home-section-content .maranatha-compact-content .maranatha-h2, .widget_text .textwidget .maranatha-home-section-content .maranatha-h2, .maranatha-home-section-content .widget_text .textwidget .maranatha-h2, .maranatha-comment .maranatha-home-section-content .maranatha-h2, .maranatha-home-section-content .maranatha-comment .maranatha-h2, .maranatha-compact-content .maranatha-home-section-content #reply-title, .maranatha-home-section-content .maranatha-compact-content #reply-title, .widget_text .textwidget .maranatha-home-section-content #reply-title, .maranatha-home-section-content .widget_text .textwidget #reply-title, .maranatha-comment .maranatha-home-section-content #reply-title, .maranatha-home-section-content .maranatha-comment #reply-title, .maranatha-compact-content #maranatha-comments-title, .widget_text .textwidget #maranatha-comments-title, .maranatha-comment #maranatha-comments-title,
+.maranatha-compact-content h2,
+.widget_text .textwidget h2,
+.maranatha-comment h2,
+.maranatha-compact-content .maranatha-h2,
+.widget_text .textwidget .maranatha-h2,
+.maranatha-comment .maranatha-h2,
+.maranatha-compact-content #reply-title,
+.widget_text .textwidget #reply-title,
+.maranatha-comment #reply-title,
+.maranatha-compact-content h3,
+.widget_text .textwidget h3,
+.maranatha-comment h3,
+.maranatha-compact-content .maranatha-nav-block-title,
+.widget_text .textwidget .maranatha-nav-block-title,
+.maranatha-comment .maranatha-nav-block-title,
+.maranatha-compact-content h4,
+.widget_text .textwidget h4,
+.maranatha-comment h4,
+.maranatha-compact-content h5,
+.widget_text .textwidget h5,
+.maranatha-comment h5,
+.maranatha-compact-content h6,
+.widget_text .textwidget h6,
+.maranatha-comment h6 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.9375rem;
+}
+.maranatha-compact-content p, .widget_text .textwidget p, .maranatha-comment p,
+.maranatha-compact-content ul,
+.widget_text .textwidget ul,
+.maranatha-comment ul,
+.maranatha-compact-content ol,
+.widget_text .textwidget ol,
+.maranatha-comment ol,
+.maranatha-compact-content dl,
+.widget_text .textwidget dl,
+.maranatha-comment dl,
+.maranatha-compact-content table,
+.widget_text .textwidget table,
+.maranatha-comment table,
+.maranatha-compact-content blockquote,
+.widget_text .textwidget blockquote,
+.maranatha-comment blockquote,
+.maranatha-compact-content q,
+.widget_text .textwidget q,
+.maranatha-comment q {
+  margin-top: 1.5625em;
+  margin-bottom: 1.5625em;
+}
+.maranatha-compact-content .alignnone, .widget_text .textwidget .alignnone, .maranatha-comment .alignnone {
+  margin-top: 1.5625em;
+  margin-bottom: 1.5625em;
+}
+.maranatha-compact-content p .alignnone, .widget_text .textwidget p .alignnone, .maranatha-comment p .alignnone {
+  margin-top: 0.375em;
+  margin-bottom: 0.375em;
+}
+.maranatha-compact-content .aligncenter, .widget_text .textwidget .aligncenter, .maranatha-comment .aligncenter {
+  margin-top: 2.1875em;
+  margin-bottom: 2.1875em;
+}
+.maranatha-compact-content .wp-caption-text, .widget_text .textwidget .wp-caption-text, .maranatha-comment .wp-caption-text {
+  font-size: 0.9em;
+}
+.maranatha-compact-content .maranatha-buttons-list, .widget_text .textwidget .maranatha-buttons-list, .maranatha-comment .maranatha-buttons-list {
+  font-size: 0.9em;
+}
+
+/*---------------------------------------------
+ * Images
+ *--------------------------------------------*/
+.maranatha-not-mobile .maranatha-hover-image img, .maranatha-not-mobile .maranatha-caption-image img, .maranatha-not-mobile .gallery-icon img {
+  -webkit-filter: brightness(1) contrast(0.95);
+  filter: brightness(1) contrast(0.95);
+}
+.maranatha-not-mobile .maranatha-hover-image a:hover img, .maranatha-not-mobile .maranatha-caption-image a:hover img, .maranatha-not-mobile .gallery-icon a:hover img {
+  -webkit-filter: brightness(1.1) contrast(0.95);
+  filter: brightness(1.1) contrast(0.95);
+}
+
+.maranatha-caption-image {
+  position: relative;
+}
+
+.maranatha-caption-image-inner {
+  background-color: #f7f7f7;
+}
+
+.maranatha-caption-image-caption {
+  display: block;
+  position: absolute;
+  bottom: 12%;
+  left: 0;
+  padding-right: 8%;
+  max-width: 92%;
+}
+.maranatha-caption-image-caption > * {
+  border-top-right-radius: 0.1875em;
+  border-bottom-right-radius: 0.1875em;
+}
+
+.maranatha-caption-image-title {
+  display: inline-block;
+  position: relative;
+  float: left;
+  max-width: 100%;
+  padding: 0.5625em 0.625em;
+  line-height: 1.2;
+}
+.maranatha-caption-image-title, .maranatha-caption-image-title h2, .maranatha-caption-image-title .maranatha-h2, .maranatha-caption-image-title #reply-title {
+  color: white;
+  font-weight: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.maranatha-heading-font-nothing-you-could-do .maranatha-caption-image-title {
+  padding-top: 0.6875em;
+  padding-bottom: 0.5625em;
+}
+
+.maranatha-caption-image-description {
+  display: inline-block;
+  position: relative;
+  max-width: 100%;
+  float: left;
+  clear: left;
+  padding: 0.375em 0.75em;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9em;
+  font-style: italic;
+  color: #444444;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*---------------------------------------------
+ * Icons
+ *--------------------------------------------*/
+.maranatha-list-icons {
+  list-style: none;
+  margin: -0.25em;
+  padding: 0;
+}
+.maranatha-list-icons li {
+  display: inline-block;
+  margin: 0.25em;
+}
+
+/*---------------------------------------------
+ * Buttons
+ *--------------------------------------------*/
+.maranatha-circle-button,
+.maranatha-circle-button span,
+.maranatha-circle-buttons-list li,
+.maranatha-circle-buttons-list a {
+  width: 7.25rem;
+  height: 7.25rem;
+  border-radius: 3.625rem;
+  border-radius: 50%;
+}
+
+.maranatha-circle-button-small,
+.maranatha-circle-button-small span,
+.maranatha-circle-buttons-list-small li,
+.maranatha-circle-buttons-list-small a {
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 1.875rem;
+  border-radius: 50%;
+}
+
+.maranatha-circle-button,
+.maranatha-circle-buttons-list li {
+  display: inline-block;
+}
+
+.maranatha-circle-button span,
+.maranatha-circle-buttons-list a {
+  display: table-cell;
+  vertical-align: middle;
+  border-width: 1px;
+  border-style: solid;
+  padding: 0.125em 0.9375rem 0;
+  font-size: 0.95em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+a.maranatha-circle-button span:hover,
+.maranatha-circle-buttons-list a:hover {
+  color: white;
+}
+
+a.maranatha-circle-button-selected span, #maranatha-sermon-download-button a.maranatha-dropdown-open span,
+.maranatha-circle-buttons-list a.maranatha-circle-button-selected,
+.maranatha-circle-buttons-list #maranatha-sermon-download-button a.maranatha-dropdown-open,
+#maranatha-sermon-download-button .maranatha-circle-buttons-list a.maranatha-dropdown-open {
+  color: white;
+}
+
+.maranatha-circle-button span.el,
+.maranatha-circle-button a.el,
+.maranatha-circle-button a span.el,
+.maranatha-circle-buttons-list span.el,
+.maranatha-circle-buttons-list a.el,
+.maranatha-circle-buttons-list a span.el {
+  margin-top: -0.125em;
+}
+.maranatha-circle-button span.el.el-chevron-left,
+.maranatha-circle-button a.el.el-chevron-left,
+.maranatha-circle-button a span.el.el-chevron-left,
+.maranatha-circle-buttons-list span.el.el-chevron-left,
+.maranatha-circle-buttons-list a.el.el-chevron-left,
+.maranatha-circle-buttons-list a span.el.el-chevron-left {
+  padding-left: 0.6875rem;
+}
+.maranatha-circle-button span.el.el-chevron-right,
+.maranatha-circle-button a.el.el-chevron-right,
+.maranatha-circle-button a span.el.el-chevron-right,
+.maranatha-circle-buttons-list span.el.el-chevron-right,
+.maranatha-circle-buttons-list a.el.el-chevron-right,
+.maranatha-circle-buttons-list a span.el.el-chevron-right {
+  padding-right: 0.6875rem;
+}
+.maranatha-circle-button span.el.el-video,
+.maranatha-circle-button a.el.el-video,
+.maranatha-circle-button a span.el.el-video,
+.maranatha-circle-buttons-list span.el.el-video,
+.maranatha-circle-buttons-list a.el.el-video,
+.maranatha-circle-buttons-list a span.el.el-video {
+  position: relative;
+  top: 0.0625em;
+  font-size: 1.61em;
+}
+.maranatha-circle-button span.el.el-align-justify,
+.maranatha-circle-button a.el.el-align-justify,
+.maranatha-circle-button a span.el.el-align-justify,
+.maranatha-circle-buttons-list span.el.el-align-justify,
+.maranatha-circle-buttons-list a.el.el-align-justify,
+.maranatha-circle-buttons-list a span.el.el-align-justify {
+  font-size: 1.33em;
+}
+.maranatha-circle-button span.el.el-download-alt,
+.maranatha-circle-button a.el.el-download-alt,
+.maranatha-circle-button a span.el.el-download-alt,
+.maranatha-circle-buttons-list span.el.el-download-alt,
+.maranatha-circle-buttons-list a.el.el-download-alt,
+.maranatha-circle-buttons-list a span.el.el-download-alt {
+  position: relative;
+  top: 0.0625em;
+  font-size: 1.33em;
+}
+.maranatha-circle-button span.el,
+.maranatha-circle-button a.el,
+.maranatha-circle-buttons-list span.el,
+.maranatha-circle-buttons-list a.el {
+  padding-top: 0.125rem;
+  font-size: 3em;
+}
+.maranatha-circle-button a,
+.maranatha-circle-buttons-list a {
+  line-height: 1.3;
+}
+.maranatha-circle-button a span.el,
+.maranatha-circle-buttons-list a span.el {
+  padding-bottom: 0.625rem;
+  font-size: 1.4em;
+  display: block;
+}
+
+.maranatha-circle-button-small span.el,
+.maranatha-circle-buttons-list-small a.el {
+  font-size: 1.7em;
+}
+
+.maranatha-circle-buttons-list {
+  margin-left: 0;
+  margin-bottom: -1.5rem !important;
+  padding: 0;
+  list-style: none;
+}
+.maranatha-circle-buttons-list li {
+  margin: 0 0.75rem 1.5rem 0.75rem;
+}
+
+.maranatha-circle-buttons-list-small {
+  margin-bottom: -0.9375rem !important;
+}
+.maranatha-circle-buttons-list-small li {
+  margin: 0 0.46875rem 0.9375rem 0.46875rem;
+}
+
+.maranatha-button, .widget_tag_cloud a,
+.maranatha-buttons-list a,
+input[type=submit],
+.maranatha-nav-left-right a,
+.maranatha-pagination li > * {
+  display: inline-block;
+  position: relative;
+  height: 3.07em;
+  line-height: 3.07em;
+  border-radius: 3.07em;
+  border-width: 1px;
+  border-style: solid;
+  padding: 0 1.375em;
+  font-size: 0.85em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.maranatha-button:hover, .widget_tag_cloud a:hover,
+.maranatha-buttons-list a:hover,
+input[type=submit]:hover,
+.maranatha-nav-left-right a:hover,
+.maranatha-pagination li > *:hover {
+  color: white;
+}
+.maranatha-button .el, .widget_tag_cloud a .el,
+.maranatha-buttons-list a .el,
+input[type=submit] .el,
+.maranatha-nav-left-right a .el,
+.maranatha-pagination li > * .el {
+  font-size: 1.1em;
+  padding-right: 0.3125em;
+  position: relative;
+  top: 0.0625em;
+}
+.maranatha-button .el-chevron-left, .widget_tag_cloud a .el-chevron-left,
+.maranatha-button .el-chevron-right,
+.widget_tag_cloud a .el-chevron-right,
+.maranatha-buttons-list a .el-chevron-left,
+.maranatha-buttons-list a .el-chevron-right,
+input[type=submit] .el-chevron-left,
+input[type=submit] .el-chevron-right,
+.maranatha-nav-left-right a .el-chevron-left,
+.maranatha-nav-left-right a .el-chevron-right,
+.maranatha-pagination li > * .el-chevron-left,
+.maranatha-pagination li > * .el-chevron-right {
+  font-size: 1em !important;
+  top: 0 !important;
+}
+.maranatha-button .el-chevron-right, .widget_tag_cloud a .el-chevron-right,
+.maranatha-buttons-list a .el-chevron-right,
+input[type=submit] .el-chevron-right,
+.maranatha-nav-left-right a .el-chevron-right,
+.maranatha-pagination li > * .el-chevron-right {
+  margin-right: -0.5em;
+  padding-left: 0.3125em;
+}
+.maranatha-button .el-video, .widget_tag_cloud a .el-video,
+.maranatha-buttons-list a .el-video,
+input[type=submit] .el-video,
+.maranatha-nav-left-right a .el-video,
+.maranatha-pagination li > * .el-video {
+  font-size: 1.3em;
+  top: 0.125em;
+  padding-right: 0.25em;
+}
+.maranatha-button .el-comment, .widget_tag_cloud a .el-comment,
+.maranatha-buttons-list a .el-comment,
+input[type=submit] .el-comment,
+.maranatha-nav-left-right a .el-comment,
+.maranatha-pagination li > * .el-comment {
+  top: 0.125em;
+}
+.maranatha-button .el-edit, .widget_tag_cloud a .el-edit,
+.maranatha-buttons-list a .el-edit,
+input[type=submit] .el-edit,
+.maranatha-nav-left-right a .el-edit,
+.maranatha-pagination li > * .el-edit {
+  font-size: 1em;
+}
+.maranatha-button .el-road, .widget_tag_cloud a .el-road,
+.maranatha-buttons-list a .el-road,
+input[type=submit] .el-road,
+.maranatha-nav-left-right a .el-road,
+.maranatha-pagination li > * .el-road {
+  top: 0.125em;
+}
+.maranatha-button .el-justify-right, .widget_tag_cloud a .el-justify-right,
+.maranatha-buttons-list a .el-justify-right,
+input[type=submit] .el-justify-right,
+.maranatha-nav-left-right a .el-justify-right,
+.maranatha-pagination li > * .el-justify-right {
+  top: 0.125em;
+}
+.maranatha-button .el-user, .widget_tag_cloud a .el-user,
+.maranatha-buttons-list a .el-user,
+input[type=submit] .el-user,
+.maranatha-nav-left-right a .el-user,
+.maranatha-pagination li > * .el-user {
+  font-size: 1em;
+}
+
+.maranatha-buttons-list {
+  margin: 0 -0.5em -1em -0.5em;
+  list-style: none;
+  padding: 0;
+}
+.maranatha-buttons-list li {
+  display: inline-block;
+  margin: 0 0.5em 1em 0.5em;
+}
+
+/*---------------------------------------------
+ * Lists
+ *--------------------------------------------*/
+.maranatha-list, .widget_categories > ul,
+.widget_ctfw-categories > ul,
+.widget_ctfw-archives > ul,
+.widget_ctfw-galleries > ul,
+.widget_recent_entries > ul,
+.widget_recent_comments > ul,
+.widget_archive > ul,
+.widget_meta > ul,
+.widget_pages > ul,
+.widget_links > ul,
+.widget_nav_menu > ul, .maranatha-sermon-index-list {
+  margin: 0;
+  margin-bottom: -0.625em !important;
+  list-style: none;
+  line-height: 1.3;
+}
+.js .maranatha-list, .js .widget_categories > ul,
+.js .widget_ctfw-categories > ul,
+.js .widget_ctfw-archives > ul,
+.js .widget_ctfw-galleries > ul,
+.js .widget_recent_entries > ul,
+.js .widget_recent_comments > ul,
+.js .widget_archive > ul,
+.js .widget_meta > ul,
+.js .widget_pages > ul,
+.js .widget_links > ul,
+.js .widget_nav_menu > ul, .js .maranatha-sermon-index-list {
+  visibility: hidden;
+}
+.maranatha-list ul, .widget_categories > ul ul,
+.widget_ctfw-categories > ul ul,
+.widget_ctfw-archives > ul ul,
+.widget_ctfw-galleries > ul ul,
+.widget_recent_entries > ul ul,
+.widget_recent_comments > ul ul,
+.widget_archive > ul ul,
+.widget_meta > ul ul,
+.widget_pages > ul ul,
+.widget_links > ul ul,
+.widget_nav_menu > ul ul, .maranatha-sermon-index-list ul {
+  margin-top: 0.3125em;
+  margin-left: 0.9375em;
+}
+.maranatha-list > li, .widget_categories > ul > li,
+.widget_ctfw-categories > ul > li,
+.widget_ctfw-archives > ul > li,
+.widget_ctfw-galleries > ul > li,
+.widget_recent_entries > ul > li,
+.widget_recent_comments > ul > li,
+.widget_archive > ul > li,
+.widget_meta > ul > li,
+.widget_pages > ul > li,
+.widget_links > ul > li,
+.widget_nav_menu > ul > li, .maranatha-sermon-index-list > li {
+  padding-bottom: 0.625em;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.maranatha-list li, .widget_categories > ul li,
+.widget_ctfw-categories > ul li,
+.widget_ctfw-archives > ul li,
+.widget_ctfw-galleries > ul li,
+.widget_recent_entries > ul li,
+.widget_recent_comments > ul li,
+.widget_archive > ul li,
+.widget_meta > ul li,
+.widget_pages > ul li,
+.widget_links > ul li,
+.widget_nav_menu > ul li, .maranatha-sermon-index-list li {
+  position: relative;
+  list-style: none;
+}
+.maranatha-list li li, .widget_categories > ul li li,
+.widget_ctfw-categories > ul li li,
+.widget_ctfw-archives > ul li li,
+.widget_ctfw-galleries > ul li li,
+.widget_recent_entries > ul li li,
+.widget_recent_comments > ul li li,
+.widget_archive > ul li li,
+.widget_meta > ul li li,
+.widget_pages > ul li li,
+.widget_links > ul li li,
+.widget_nav_menu > ul li li, .maranatha-sermon-index-list li li {
+  margin-bottom: 0.3125em;
+}
+.maranatha-list li li a, .widget_categories > ul li li a,
+.widget_ctfw-categories > ul li li a,
+.widget_ctfw-archives > ul li li a,
+.widget_ctfw-galleries > ul li li a,
+.widget_recent_entries > ul li li a,
+.widget_recent_comments > ul li li a,
+.widget_archive > ul li li a,
+.widget_meta > ul li li a,
+.widget_pages > ul li li a,
+.widget_links > ul li li a,
+.widget_nav_menu > ul li li a, .maranatha-sermon-index-list li li a {
+  font-size: 0.9em;
+}
+.maranatha-list li li li, .widget_categories > ul li li li,
+.widget_ctfw-categories > ul li li li,
+.widget_ctfw-archives > ul li li li,
+.widget_ctfw-galleries > ul li li li,
+.widget_recent_entries > ul li li li,
+.widget_recent_comments > ul li li li,
+.widget_archive > ul li li li,
+.widget_meta > ul li li li,
+.widget_pages > ul li li li,
+.widget_links > ul li li li,
+.widget_nav_menu > ul li li li, .maranatha-sermon-index-list li li li {
+  font-style: italic;
+}
+.maranatha-list > li, .widget_categories > ul > li,
+.widget_ctfw-categories > ul > li,
+.widget_ctfw-archives > ul > li,
+.widget_ctfw-galleries > ul > li,
+.widget_recent_entries > ul > li,
+.widget_recent_comments > ul > li,
+.widget_archive > ul > li,
+.widget_meta > ul > li,
+.widget_pages > ul > li,
+.widget_links > ul > li,
+.widget_nav_menu > ul > li, .maranatha-sermon-index-list > li {
+  padding-right: 1.875em;
+}
+
+.maranatha-list-item-count {
+  position: absolute;
+  top: 0.0625em;
+  right: 0;
+  font-size: 0.9em;
+  font-style: normal;
+}
+li li .maranatha-list-item-count {
+  right: -2.0625em;
+}
+
+/*---------------------------------------------
+ * Navigation
+ *--------------------------------------------*/
+.maranatha-nav-blocks {
+  overflow: hidden;
+}
+.maranatha-has-nav-blocks.maranatha-no-comments-section .maranatha-nav-blocks {
+  margin-bottom: 0;
+}
+
+.maranatha-nav-block {
+  position: relative;
+  display: inline-block;
+  width: 50%;
+  padding-bottom: 12.5%;
+  cursor: pointer;
+}
+.maranatha-nav-block.maranatha-nav-block-empty {
+  cursor: default;
+}
+
+.maranatha-nav-block-image,
+.maranatha-nav-block-content {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.maranatha-nav-block-image {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.maranatha-nav-block-content {
+  z-index: 2;
+  padding: 0 10%;
+}
+
+.maranatha-nav-block-content-columns {
+  display: table;
+  height: 100%;
+  min-width: 50%;
+  margin: 0 auto;
+}
+
+.maranatha-nav-block-content-column {
+  display: table-cell;
+  height: 100%;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.maranatha-nav-block-content-arrow {
+  position: absolute;
+  top: 44%;
+  top: calc(50% - 12px );
+  font-size: 16px;
+}
+.maranatha-nav-block-content-arrow.maranatha-nav-block-content-left {
+  left: 5%;
+}
+.maranatha-nav-block-content-arrow.maranatha-nav-block-content-right {
+  right: 5%;
+}
+
+.maranatha-nav-block-content-text {
+  max-width: 450px;
+}
+.maranatha-nav-block-content-text.maranatha-nav-block-content-right {
+  padding-left: 1.5em;
+}
+.maranatha-nav-block-content-text.maranatha-nav-block-content-left {
+  padding-right: 1.5em;
+}
+
+.maranatha-nav-block-label {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  padding-bottom: 0.125em;
+}
+
+.maranatha-nav-block-left {
+  float: left;
+}
+.maranatha-nav-block-has-both .maranatha-nav-block-left {
+  border-width: 0 1px 0 0;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.maranatha-nav-block-right {
+  float: right;
+}
+
+.maranatha-nav-left, .maranatha-nav-right {
+  float: left;
+  width: 50%;
+  max-width: 100%;
+}
+
+.maranatha-nav-right {
+  float: right;
+  text-align: right;
+}
+
+ul.page-numbers {
+  margin: 0.3125em;
+  list-style: none;
+  text-align: center;
+}
+ul.page-numbers li {
+  margin: 0.3125em;
+  display: inline-block;
+  text-align: center;
+}
+ul.page-numbers li > * {
+  width: 3.07em;
+  padding: 0;
+}
+ul.page-numbers span.current {
+  color: #fff;
+}
+ul.page-numbers span.dots {
+  width: auto;
+  padding: 0;
+  border: none;
+  color: #444444;
+}
+ul.page-numbers .el {
+  margin-top: 0.0625em;
+}
+ul.page-numbers .el-chevron-left {
+  margin-left: 0.1875em;
+}
+ul.page-numbers .el-chevron-right {
+  margin-top: 0.0625em;
+  padding-left: 0;
+}
+
+/*---------------------------------------------
+ * Author Box
+ *--------------------------------------------*/
+.maranatha-author-box {
+  position: relative;
+}
+.single .maranatha-author-box {
+  top: -0.3125em;
+  min-height: 11.875em;
+  padding: 2.5em;
+  border-radius: 0.3125em;
+  background-color: #f7f7f7;
+}
+.archive .maranatha-author-box {
+  min-height: 7.375em;
+}
+
+.maranatha-author-avatar {
+  position: absolute;
+  width: 6.875em;
+  height: 6.875em;
+}
+.single .maranatha-author-avatar {
+  left: 2.5em;
+}
+.maranatha-author-avatar img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 3.4375em;
+  border-radius: 50%;
+}
+
+.maranatha-author-content {
+  margin-left: 9.275em;
+}
+.maranatha-author-content header {
+  min-height: 2.625em;
+}
+.maranatha-author-content h2, .maranatha-author-content .maranatha-h2, .maranatha-author-content #reply-title {
+  display: inline-block;
+  margin: 0 1.875em 0 0;
+  vertical-align: middle;
+}
+
+.maranatha-author-box-archive {
+  position: relative;
+  top: -0.3125em;
+  vertical-align: middle;
+  float: right;
+  font-size: 0.9em;
+}
+
+.maranatha-author-bio {
+  margin-top: 0.875em;
+}
+.maranatha-author-bio p:first-child {
+  margin-top: 0;
+}
+.maranatha-author-bio p:last-child {
+  margin-bottom: 0;
+}
+
+/*---------------------------------------------
+ * Search Form
+ *--------------------------------------------*/
+.maranatha-search-form form {
+  margin: 0;
+  white-space: nowrap;
+}
+.maranatha-search-form form > * {
+  display: inline-block;
+  margin-left: 0.4375em;
+  vertical-align: middle;
+}
+.maranatha-search-form form > *:first-child {
+  margin-left: 0;
+}
+.maranatha-search-form form input[type=text] {
+  width: 180px;
+  text-transform: uppercase;
+}
+
+/*---------------------------------------------
+ * MediaElement.js
+ *--------------------------------------------*/
+.hentry .mejs-time {
+  padding-top: 10px !important;
+}
+
+.wp-video {
+  min-width: 99%;
+}
+
+.hentry .mejs-controls .mejs-button button:focus {
+  outline: none;
+}
+
+.hentry .mejs-container .mejs-controls {
+  background: #222;
+}
+
+.hentry .mejs-controls .mejs-time-rail .mejs-time-total {
+  background: #555;
+}
+
+.hentry .mejs-controls .mejs-time-rail .mejs-time-loaded {
+  background: #828282;
+}
+
+.hentry .mejs-controls .mejs-time-rail .mejs-time-current {
+  background: #d2d2d2;
+}
+
+.hentry .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
+  background: #555;
+}
+
+.hentry .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
+  background: #d2d2d2;
+}
+
+/*---------------------------------------------
+ * Google Maps JS
+ *--------------------------------------------*/
+.ctfw-google-map.ctfw-google-map-responsive {
+  padding-bottom: 50%;
+}
+
+/* Prevent responsive images affecting Google Maps */
+.ctfw-google-map img {
+  max-width: none;
+}
+
+/*---------------------------------------------
+ * Map Section
+ *--------------------------------------------*/
+.maranatha-map-section,
+#maranatha-map-section-canvas {
+  display: block;
+  min-height: 350px !important;
+  width: 100%;
+}
+
+.maranatha-map-section {
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+#maranatha-map-section-canvas {
+  position: absolute;
+  top: 0;
+}
+
+#maranatha-map-section-content-container {
+  z-index: 1;
+  position: relative;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 550px;
+  height: 100%;
+}
+
+#maranatha-map-section-content {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+#maranatha-map-section-content > * {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#maranatha-map-section-left {
+  padding-right: 1.875em;
+}
+.maranatha-no-map-info #maranatha-map-section-left {
+  text-align: center;
+}
+
+#maranatha-map-section-marker span {
+  background-color: #fff;
+}
+
+#maranatha-map-section-right {
+  text-align: right;
+  width: 80%;
+}
+
+#maranatha-map-section-info {
+  display: inline-block;
+  min-width: 300px;
+  max-width: 500px;
+  padding: 1.875em;
+  border-radius: 0.3125em;
+  background-color: white;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  text-align: left;
+  font-size: 0.95rem;
+  overflow: hidden;
+}
+#maranatha-map-section-info > *:nth-child(2) {
+  margin-top: 1.75em;
+}
+#maranatha-map-section-info .el {
+  top: 3px;
+}
+#maranatha-map-section-info .el-envelope {
+  top: 2px;
+}
+#maranatha-map-section-info .el-flag {
+  left: 1px;
+  font-size: 1.1em;
+}
+
+#maranatha-map-section-info-list {
+  list-style: none;
+  margin: 0 0.625em -1.25em 0;
+  padding: 0;
+}
+
+#maranatha-map-section-info-list li {
+  display: block;
+  float: left;
+  position: relative;
+  margin-right: 1.25em;
+  margin-bottom: 1.25em;
+  vertical-align: top;
+}
+
+#maranatha-map-section-info-list li.maranatha-map-info-full {
+  float: none;
+}
+
+#maranatha-map-section-info-list li .el {
+  display: block;
+  position: absolute;
+  top: 2px;
+  font-size: 1.2em;
+}
+
+#maranatha-map-section-info-list li p {
+  margin: 0 0 0 27px;
+}
+
+#maranatha-map-section-address {
+  font-weight: 600;
+}
+
+.maranatha-map-section-multiple-locations .maranatha-map-button-more-item {
+  display: none;
+}
+
+/*---------------------------------------------
+ * jQuery Dropdown
+ *--------------------------------------------*/
+.maranatha-dropdown {
+  position: absolute;
+  z-index: 99999;
+  display: none;
+}
+.maranatha-dropdown a {
+  font-weight: normal;
+}
+.maranatha-dropdown .maranatha-dropdown-menu,
+.maranatha-dropdown .maranatha-dropdown-panel {
+  min-width: 160px;
+  max-width: 200px;
+  list-style: none;
+  overflow: visible;
+  margin: 0.25em 0 0 0;
+  padding: 1em 0.875em 0.9375em 1.625em;
+  font-size: 0.95em;
+  border-radius: 0.3125em;
+  background-color: white;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+.maranatha-dropdown .maranatha-dropdown-menu a:hover,
+.maranatha-dropdown .maranatha-dropdown-panel a:hover {
+  color: black;
+}
+.maranatha-dropdown .maranatha-dropdown-menu {
+  padding: 0.875em 1.625em;
+}
+.maranatha-dropdown .maranatha-dropdown-menu li {
+  margin: 0.625em 0;
+}
+
+/*---------------------------------------------
+ * Tooltipster
+ *--------------------------------------------*/
+.maranatha-tooltipster {
+  margin-left: 0.625em;
+  margin-right: 0.625em;
+  border-radius: 0.3125em;
+  background-color: white;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+.maranatha-tooltipster .tooltipster-content {
+  padding: 1.5625em;
+  overflow: hidden;
+  font-size: 15px;
+}
+
+/*---------------------------------------------
+ * Visibility
+ *--------------------------------------------*/
+.maranatha-hidden {
+  display: none;
+}
+
+.maranatha-invisible {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  left: 30000px;
+}
+
+.screen-reader-text, #maranatha-main-title {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.screen-reader-text:focus, #maranatha-main-title:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: #21759b;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+  /* Above WP toolbar. */
+}
+
+/*---------------------------------------------
+ * Clearfix
+ *--------------------------------------------*/
+.maranatha-clearfix:before, .maranatha-nav-left-right:before, .maranatha-pagination:before, #maranatha-footer-widgets:before, #maranatha-sermon-series-list ul:before, #maranatha-calendar-header:before, .gallery:before,
+.maranatha-clearfix:after,
+.maranatha-nav-left-right:after,
+.maranatha-pagination:after,
+#maranatha-footer-widgets:after,
+#maranatha-sermon-series-list ul:after,
+#maranatha-calendar-header:after,
+.gallery:after {
+  content: "";
+  display: table;
+}
+
+.maranatha-clearfix:after, .maranatha-nav-left-right:after, .maranatha-pagination:after, #maranatha-footer-widgets:after, #maranatha-sermon-series-list ul:after, #maranatha-calendar-header:after, .gallery:after {
+  clear: both;
+}
+
+/**********************************************
+ * 4. WORDPRESS STYLES
+ **********************************************/
+/*---------------------------------------------
+ * WordPress Images
+ *--------------------------------------------*/
+p .alignnone {
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.alignleft {
+  float: left;
+  margin: 1.25em 2.1875em 1.25em 0;
+}
+
+.alignright {
+  float: right;
+  margin: 1.25em 0 1.25em 2.5em;
+}
+
+.wp-caption {
+  max-width: 100%;
+  text-align: center;
+}
+
+.wp-caption-text {
+  margin: 0.5em 0 0 0;
+  padding: 0 0.3125em;
+  font-size: 0.8em;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/**********************************************
+ * 5. BACKGROUNDS
+ **********************************************/
+body {
+  background-color: white;
+}
+
+.maranatha-color-main-bg {
+  color: white;
+}
+.maranatha-color-main-bg a,
+.maranatha-color-main-bg a:hover {
+  color: white;
+}
+.maranatha-color-main-bg h1, .maranatha-color-main-bg .maranatha-h1, .maranatha-color-main-bg .maranatha-home-section-content h2, .maranatha-home-section-content .maranatha-color-main-bg h2, .maranatha-color-main-bg .maranatha-home-section-content .maranatha-h2, .maranatha-home-section-content .maranatha-color-main-bg .maranatha-h2, .maranatha-color-main-bg .maranatha-home-section-content #reply-title, .maranatha-home-section-content .maranatha-color-main-bg #reply-title, .maranatha-color-main-bg #maranatha-comments-title,
+.maranatha-color-main-bg h2,
+.maranatha-color-main-bg .maranatha-h2,
+.maranatha-color-main-bg #reply-title {
+  color: white;
+}
+.maranatha-color-main-bg .maranatha-circle-buttons-list a {
+  border-color: white;
+  color: white;
+}
+.maranatha-color-main-bg .maranatha-circle-buttons-list a:hover {
+  background-color: white;
+  color: black;
+}
+
+.maranatha-color-dark-bg {
+  background-color: #2b2b2b;
+  color: white;
+}
+.maranatha-color-dark-bg a,
+.maranatha-color-dark-bg a:hover {
+  color: white;
+  border-color: white;
+}
+.maranatha-color-dark-bg h1, .maranatha-color-dark-bg .maranatha-h1, .maranatha-color-dark-bg .maranatha-home-section-content h2, .maranatha-home-section-content .maranatha-color-dark-bg h2, .maranatha-color-dark-bg .maranatha-home-section-content .maranatha-h2, .maranatha-home-section-content .maranatha-color-dark-bg .maranatha-h2, .maranatha-color-dark-bg .maranatha-home-section-content #reply-title, .maranatha-home-section-content .maranatha-color-dark-bg #reply-title, .maranatha-color-dark-bg #maranatha-comments-title,
+.maranatha-color-dark-bg h2,
+.maranatha-color-dark-bg .maranatha-h2,
+.maranatha-color-dark-bg #reply-title {
+  color: white;
+}
+.maranatha-color-dark-bg .maranatha-circle-buttons-list a {
+  border-color: white;
+  color: white;
+}
+.maranatha-color-dark-bg .maranatha-circle-buttons-list a:hover {
+  background-color: white;
+  color: black;
+}
+
+.maranatha-color-light-bg {
+  background-color: white;
+  color: black;
+}
+.maranatha-color-light-bg a,
+.maranatha-color-light-bg a:hover {
+  color: black;
+  border-color: black;
+}
+.maranatha-color-light-bg .maranatha-circle-buttons-list a {
+  border-color: black;
+  color: black;
+}
+.maranatha-color-light-bg .maranatha-circle-buttons-list a:hover {
+  background-color: black;
+  color: white;
+}
+
+.maranatha-bg, .maranatha-no-comments-section .maranatha-nav-block.maranatha-nav-block-empty {
+  background-color: white;
+}
+
+.maranatha-secondary-bg, .maranatha-nav-block.maranatha-nav-block-empty {
+  background-color: #f7f7f7;
+}
+
+/**********************************************
+ * 6. LAYOUT
+ **********************************************/
+/*---------------------------------------------
+ * Viewport Helpers
+ *--------------------------------------------*/
+.maranatha-viewport-height {
+  height: 100vh;
+  content: 'viewport-units-buggyfill; height: 100vh;';
+}
+
+.maranatha-viewport-height-near-full {
+  height: 95vh;
+  content: 'viewport-units-buggyfill; height: 95vh;';
+}
+
+.maranatha-viewport-height-three-fourths {
+  height: 75vh;
+  content: 'viewport-units-buggyfill; height: 75vh;';
+}
+
+.maranatha-viewport-height-two-thirds {
+  height: 67vh;
+  content: 'viewport-units-buggyfill; height: 67vh;';
+}
+
+.maranatha-viewport-height-half {
+  height: 50vh;
+  content: 'viewport-units-buggyfill; height: 50vh;';
+}
+
+.maranatha-viewport-height-one-third {
+  height: 33vh;
+  content: 'viewport-units-buggyfill; height: 33vh;';
+}
+
+.maranatha-viewport-height-one-fourth {
+  height: 25vh;
+  content: 'viewport-units-buggyfill; height: 25vh;';
+}
+
+/*---------------------------------------------
+ * Centered Blocks
+ *--------------------------------------------*/
+.maranatha-centered, .maranatha-centered-large, .maranatha-centered-medium, #maranatha-banner-inner, .maranatha-home-section-content, .page-template-events-calendar .maranatha-entry-full-content > *:not(#maranatha-calendar), .maranatha-centered-small, .maranatha-attachment-image .wp-caption-text {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.maranatha-centered-large {
+  max-width: 1170px;
+}
+
+.maranatha-centered-medium, #maranatha-banner-inner, .maranatha-home-section-content, .page-template-events-calendar .maranatha-entry-full-content > *:not(#maranatha-calendar) {
+  max-width: 980px;
+}
+
+.maranatha-centered-small, .maranatha-attachment-image .wp-caption-text {
+  max-width: 700px;
+}
+
+/*---------------------------------------------
+ * Vertical Spacing
+ *--------------------------------------------*/
+.maranatha-vertical-margin-small, .alignnone, .aligncenter, div.wpcf7 {
+  margin-top: 3.125rem;
+  margin-bottom: 3.125rem;
+}
+
+.maranatha-vertical-padding-small, .maranatha-footer-no-icons #maranatha-footer-icons-notice {
+  padding-top: 3.125rem;
+  padding-bottom: 3.125rem;
+}
+
+.maranatha-vertical-margin-top-small, #maranatha-footer-icons-notice > *:nth-child(2), #maranatha-sermon-buttons, #maranatha-calendar-list .maranatha-event-short, #respond .form-submit {
+  margin-top: 3.125rem;
+}
+
+.maranatha-vertical-padding-top-small {
+  padding-top: 3.125rem;
+}
+
+.maranatha-vertical-margin-bottom-small, #respond .comment-notes,
+#respond .logged-in-as {
+  margin-bottom: 3.125rem;
+}
+
+.maranatha-vertical-padding-bottom-small {
+  padding-bottom: 3.125rem;
+}
+
+.maranatha-vertical-margin-small-content, p,
+ul,
+ol,
+dl,
+table,
+q {
+  margin-top: 2.1875rem;
+  margin-bottom: 2.1875rem;
+}
+
+.maranatha-vertical-padding-small-content {
+  padding-top: 2.1875rem;
+  padding-bottom: 2.1875rem;
+}
+
+.maranatha-vertical-margin-top-small-content {
+  margin-top: 2.1875rem;
+}
+
+.maranatha-vertical-padding-top-small-content {
+  padding-top: 2.1875rem;
+}
+
+.maranatha-vertical-margin-bottom-small-content {
+  margin-bottom: 2.1875rem;
+}
+
+.maranatha-vertical-padding-bottom-small-content {
+  padding-bottom: 2.1875rem;
+}
+
+.maranatha-vertical-margin-medium, hr, .maranatha-entry-full-footer-has-terms .maranatha-entry-full-page-nav {
+  margin-top: 4.375rem;
+  margin-bottom: 4.375rem;
+}
+
+.maranatha-vertical-padding-medium, #maranatha-footer-widgets-row, .maranatha-footer-has-icons #maranatha-footer-icons-notice {
+  padding-top: 4.375rem;
+  padding-bottom: 4.375rem;
+}
+
+.maranatha-vertical-margin-top-medium, .maranatha-pagination, #maranatha-content, .maranatha-entry-full-footer, .maranatha-sermon-index, .maranatha-entry-has-content #maranatha-calendar, #maranatha-calendar-list, .attachment .maranatha-entry-content, .attachment .maranatha-compact-content, .attachment .widget_text .textwidget, .widget_text .attachment .textwidget, .attachment .maranatha-comment, .attachment .maranatha-nav-left-right, .maranatha-comment, #maranatha-comment-nav, #respond, #maranatha-comments-closed {
+  margin-top: 4.375rem;
+}
+
+.maranatha-vertical-padding-top-medium {
+  padding-top: 4.375rem;
+}
+
+.maranatha-vertical-margin-bottom-medium, .maranatha-entry-full .maranatha-entry-content-inner,
+.archive #maranatha-content-inner > .maranatha-entry-content,
+.archive #maranatha-content-inner > .maranatha-compact-content,
+.archive .widget_text #maranatha-content-inner > .textwidget,
+.widget_text .archive #maranatha-content-inner > .textwidget,
+.archive #maranatha-content-inner > .maranatha-comment,
+.blog #maranatha-content-inner > .maranatha-entry-content,
+.blog #maranatha-content-inner > .maranatha-compact-content,
+.blog .widget_text #maranatha-content-inner > .textwidget,
+.widget_text .blog #maranatha-content-inner > .textwidget,
+.blog #maranatha-content-inner > .maranatha-comment,
+.search #maranatha-content-inner > .maranatha-entry-content,
+.search #maranatha-content-inner > .maranatha-compact-content,
+.search .widget_text #maranatha-content-inner > .textwidget,
+.widget_text .search #maranatha-content-inner > .textwidget,
+.search #maranatha-content-inner > .maranatha-comment, .maranatha-entry-full-header, .maranatha-entry-full-map, .maranatha-loop-one-column .maranatha-entry-short, #maranatha-sermon-media, #maranatha-sermon-index-header, #maranatha-calendar-list h3, #maranatha-calendar-list .maranatha-nav-block-title, .maranatha-attachment-image, #maranatha-comments-header, li:not(:last-child) #respond {
+  margin-bottom: 4.375rem;
+}
+
+.maranatha-vertical-padding-bottom-medium {
+  padding-bottom: 4.375rem;
+}
+
+.maranatha-vertical-margin-medium-content, blockquote, .gallery {
+  margin-top: 3.0625rem;
+  margin-bottom: 3.0625rem;
+}
+
+.maranatha-vertical-padding-medium-content {
+  padding-top: 3.0625rem;
+  padding-bottom: 3.0625rem;
+}
+
+.maranatha-vertical-margin-top-medium-content, .maranatha-home-section-content .maranatha-circle-buttons-list {
+  margin-top: 3.0625rem;
+}
+
+.maranatha-vertical-padding-top-medium-content {
+  padding-top: 3.0625rem;
+}
+
+.maranatha-vertical-margin-bottom-medium-content {
+  margin-bottom: 3.0625rem;
+}
+
+.maranatha-vertical-padding-bottom-medium-content {
+  padding-bottom: 3.0625rem;
+}
+
+.maranatha-vertical-margin-large {
+  margin-top: 6.25rem;
+  margin-bottom: 6.25rem;
+}
+
+.maranatha-vertical-padding-large, .maranatha-home-section-content {
+  padding-top: 6.25rem;
+  padding-bottom: 6.25rem;
+}
+
+.maranatha-vertical-margin-top-large, .maranatha-nav-blocks, .single .maranatha-author-box, #comments {
+  margin-top: 6.25rem;
+}
+
+.maranatha-vertical-padding-top-large {
+  padding-top: 6.25rem;
+}
+
+.maranatha-vertical-margin-bottom-large, #maranatha-content {
+  margin-bottom: 6.25rem;
+}
+
+.maranatha-vertical-padding-bottom-large {
+  padding-bottom: 6.25rem;
+}
+
+.maranatha-vertical-margin-large-content {
+  margin-top: 4.375rem;
+  margin-bottom: 4.375rem;
+}
+
+.maranatha-vertical-padding-large-content {
+  padding-top: 4.375rem;
+  padding-bottom: 4.375rem;
+}
+
+.maranatha-vertical-margin-top-large-content {
+  margin-top: 4.375rem;
+}
+
+.maranatha-vertical-padding-top-large-content {
+  padding-top: 4.375rem;
+}
+
+.maranatha-vertical-margin-bottom-large-content {
+  margin-bottom: 4.375rem;
+}
+
+.maranatha-vertical-padding-bottom-large-content {
+  padding-bottom: 4.375rem;
+}
+
+.maranatha-vertical-margin-medium-small-content, h1, .maranatha-h1, .maranatha-home-section-content h2, .maranatha-home-section-content .maranatha-h2, #maranatha-comments-title,
+h2,
+.maranatha-h2,
+#reply-title,
+h3,
+.maranatha-nav-block-title,
+h4,
+h5,
+h6 {
+  margin-top: 3.0625rem;
+  margin-bottom: 2.1875rem;
+}
+
+/*---------------------------------------------
+ * Main Content <main>
+ *--------------------------------------------*/
+#maranatha-content {
+  display: block;
+  min-height: 20vh;
+  content: 'viewport-units-buggyfill; min-height: 20vh;';
+  overflow: hidden;
+}
+.maranatha-has-entry-map #maranatha-content {
+  margin-top: 0;
+}
+.maranatha-no-comments-section.maranatha-has-nav-blocks #maranatha-content {
+  margin-bottom: 0;
+}
+
+/**********************************************
+ * 7. HEADER
+ **********************************************/
+/*---------------------------------------------
+ * Header Bar
+ *--------------------------------------------*/
+#maranatha-header-top {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999999;
+  padding: 2.8125em 0;
+}
+.maranatha-scrolled #maranatha-header-top {
+  padding: 0.625em 0;
+  box-shadow: 0 -5px 80px rgba(255, 255, 255, 0.07);
+}
+
+#maranatha-header-top-bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+}
+.maranatha-scrolled #maranatha-header-top-bg {
+  opacity: 1;
+}
+
+#maranatha-header-top-inner {
+  display: table;
+  width: 100%;
+  min-height: 2em;
+  font-size: 1rem;
+}
+#maranatha-header-top-inner > * {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/*---------------------------------------------
+ * Logo
+ *--------------------------------------------*/
+#maranatha-logo {
+  position: relative;
+}
+
+#maranatha-logo-content {
+  min-width: 200px;
+  text-align: left;
+}
+
+#maranatha-logo-image {
+  position: relative;
+  max-width: 300px;
+}
+#maranatha-logo-image a {
+  display: inline-block;
+}
+
+#maranatha-logo-image img {
+  max-width: 100%;
+  max-height: 50px;
+  height: auto;
+  width: auto;
+}
+
+.maranatha-scrolled #maranatha-logo-image img {
+  max-height: 30px;
+}
+
+#maranatha-logo-regular {
+  display: inline-block;
+}
+
+#maranatha-logo-hidpi {
+  display: none;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.25), only screen and (min-resolution: 120dpi), only screen and (-o-min-device-pixel-ratio: 5 / 4) {
+  .maranatha-has-hidpi-logo #maranatha-logo-regular {
+    display: none;
+  }
+
+  .maranatha-has-hidpi-logo #maranatha-logo-hidpi[width],
+  .no-js .maranatha-has-hidpi-logo #maranatha-logo-hidpi {
+    display: inline-block;
+  }
+}
+#maranatha-logo-text {
+  position: relative;
+  left: -2px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+#maranatha-logo-text a {
+  color: #fff;
+  font-weight: 600;
+}
+.maranatha-logo-font-lato #maranatha-logo-text a, .maranatha-logo-font-open-sans #maranatha-logo-text a, .maranatha-logo-font-roboto #maranatha-logo-text a, .maranatha-logo-font-catamaran #maranatha-logo-text a, .maranatha-logo-font-source-sans-pro #maranatha-logo-text a, .maranatha-logo-font-titillium-web #maranatha-logo-text a {
+  font-weight: 400;
+}
+.maranatha-logo-font-raleway #maranatha-logo-text a, .maranatha-logo-font-ubuntu #maranatha-logo-text a {
+  font-weight: 500;
+}
+
+#maranatha-logo-text.maranatha-logo-text-extra-small {
+  font-size: 1em;
+}
+
+#maranatha-logo-text.maranatha-logo-text-small {
+  font-size: 1.25em;
+}
+
+#maranatha-logo-text.maranatha-logo-text-medium {
+  font-size: 1.5em;
+}
+
+#maranatha-logo-text.maranatha-logo-text-large {
+  font-size: 1.75em;
+}
+
+#maranatha-logo-text.maranatha-logo-text-extra-large {
+  font-size: 2em;
+}
+
+/*---------------------------------------------
+ * Menu (Dropdowns)
+ *--------------------------------------------*/
+#maranatha-header-menu {
+  padding-left: 1.5em;
+}
+
+#maranatha-header-menu-content {
+  position: relative;
+  top: 0.125em;
+  margin: 0;
+  float: right;
+  font-size: 0.9em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+#maranatha-header-menu-content > li {
+  display: inline-block;
+  margin: 0.3125em 0 0 1.25em;
+  padding-bottom: 0.5em;
+  vertical-align: top;
+  text-align: left;
+}
+
+#maranatha-header-menu-content > li > a {
+  position: relative;
+  display: inline-block;
+  color: #fff;
+}
+
+/*
+Superfish (Dropdowns) - http://users.tpg.com.au/j_birch/plugins/superfish/
+Copyright (c) 2013 Joel Birch
+Dual licensed under the MIT and GPL licenses
+*/
+.sf-menu,
+.sf-menu * {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sf-menu {
+  float: left;
+  margin-bottom: 1em;
+  line-height: 1;
+}
+
+.sf-menu li {
+  position: relative;
+}
+
+.sf-menu a {
+  display: block;
+  position: relative;
+  font-weight: normal;
+}
+
+.sf-menu li:hover ul,
+.sf-menu li.sfHover ul {
+  top: 1.5625em;
+  z-index: 12000;
+}
+
+.sf-menu li:not(.maranatha-dropdown-align-right):hover ul,
+.sf-menu li:not(.maranatha-dropdown-align-right).sfHover ul {
+  left: -1.25em;
+}
+
+.sf-menu li.maranatha-dropdown-align-right:hover ul,
+.sf-menu li.maranatha-dropdown-align-right.sfHover ul {
+  right: -1.25em;
+}
+
+.sf-menu > li.maranatha-dropdown-open-left > ul ul {
+  left: auto !important;
+  right: 100% !important;
+}
+
+.sf-menu li:hover li ul,
+.sf-menu li.sfHover li ul,
+.sf-menu li li:hover li ul,
+.sf-menu li li.sfHover li ul {
+  top: -999em;
+}
+
+.sf-menu li li:hover ul,
+.sf-menu li li.sfHover ul,
+.sf-menu li li li:hover ul,
+.sf-menu li li li.sfHover ul {
+  left: 10em;
+  top: 0;
+}
+
+.sf-menu ul {
+  position: absolute;
+  top: -999em;
+  width: 10em;
+  padding: 0.75em 0.5em 0.75em 0.625em;
+  border-radius: 0.3125em;
+  background-color: white;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+.sf-menu ul ul {
+  margin-top: -0.75em;
+}
+
+.sf-menu ul li {
+  width: 100%;
+}
+
+.sf-menu li li a {
+  padding: 0.4em 0.8em;
+  font-size: 0.9em;
+  line-height: 1.4;
+}
+
+.sf-menu li li.menu-item-has-children a {
+  padding-right: 1.625em;
+}
+
+.sf-menu ul li:hover > a,
+.sf-menu ul li.sfHover > a,
+.sf-menu ul a:focus,
+.sf-menu ul a:hover,
+.sf-menu ul a:active {
+  outline: 0;
+  color: black !important;
+}
+
+.sf-arrows ul .sf-with-ul:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  height: 0;
+  width: 0;
+  border-width: 0.4375em;
+  border-style: solid;
+  border-color: transparent;
+}
+
+.sf-arrows .sf-with-ul a:after {
+  right: -1.0625em;
+  margin-top: -0.125em;
+}
+
+.sf-arrows ul .sf-with-ul:after {
+  right: 0.625em;
+  margin-top: -0.375em;
+  margin-right: -0.1875em;
+}
+
+.sf-arrows ul li > .sf-with-ul:focus:after,
+.sf-arrows ul li:hover > .sf-with-ul:after,
+.sf-arrows ul .sfHover > .sf-with-ul:after {
+  border-left-color: black;
+}
+
+/*---------------------------------------------
+ * Search
+ *--------------------------------------------*/
+#maranatha-header-search-opened {
+  display: none;
+}
+
+#maranatha-header-search-closed {
+  display: inline-block;
+}
+
+#maranatha-header-menu {
+  display: table-cell;
+}
+
+.maranatha-search-is-open #maranatha-header-menu,
+.maranatha-search-is-open #maranatha-header-search-closed {
+  display: none;
+}
+
+.maranatha-search-is-open #maranatha-header-search-opened {
+  display: inline-block;
+}
+
+#maranatha-header-search {
+  position: relative;
+  z-index: 2;
+  padding-left: 1em;
+  text-align: right;
+}
+#maranatha-header-search a {
+  color: #fff;
+}
+#maranatha-header-search form {
+  position: relative;
+}
+#maranatha-header-search input[type=text] {
+  width: 200px;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  color: white;
+  border-color: white;
+}
+#maranatha-header-search input[type=text]:focus {
+  border-color: white;
+}
+
+#maranatha-header-search-opened {
+  text-align: right;
+  white-space: nowrap;
+}
+#maranatha-header-search-opened > * {
+  vertical-align: middle;
+  display: inline-block;
+  margin-left: 0.375em;
+}
+
+#maranatha-header-search-mobile {
+  position: relative;
+  z-index: 2;
+  width: auto;
+  display: block;
+  padding: 0.875em 0 1.125em 0.6875em;
+  text-align: left;
+}
+#maranatha-header-search-mobile a {
+  font-size: 1.3em;
+  width: auto;
+  float: none;
+}
+#maranatha-header-search-mobile form {
+  position: relative;
+}
+#maranatha-header-search-mobile form > * {
+  vertical-align: middle;
+  display: inline-block;
+  margin-left: 0.375em;
+}
+#maranatha-header-search-mobile input[type=text] {
+  width: 150px;
+  height: 2.0625em;
+  border-radius: 2.0625em;
+  padding: 0 0.9375em;
+  text-transform: uppercase;
+  line-height: 2.0625em;
+}
+#maranatha-header-search-mobile input[type=text]:focus {
+  border-color: black !important;
+}
+
+/*---------------------------------------------
+ * Mobile Menu
+ *--------------------------------------------*/
+/*
+MeanMenu - https://github.com/meanthemes/meanMenu
+GPL License, Copyright (c) 2013 Chris Wharton
+A responsive menu appears at the top and the regular menu disappears on small devices
+*/
+a.meanmenu-reveal {
+  display: none;
+}
+
+.mean-container .mean-bar {
+  position: relative;
+  z-index: 1;
+  width: 70px;
+  height: 0 !important;
+  margin-right: 4.5%;
+  padding: 0;
+  float: right;
+  text-align: right;
+}
+
+.mean-container a.meanmenu-reveal {
+  display: block;
+  position: absolute;
+  top: -11px;
+  right: 5% !important;
+  width: 22px;
+  padding: 0;
+  cursor: pointer;
+  font-size: 1px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  line-height: 22px;
+  text-decoration: none;
+  text-indent: -9999em;
+  color: #fff;
+}
+
+.mean-container a.meanmenu-reveal span {
+  display: block;
+  margin-top: 3px;
+  height: 3px;
+  background-color: #fff;
+}
+
+.mean-container .el-remove-sign {
+  position: relative;
+  top: 1px;
+  left: 1px;
+}
+
+.mean-container .mean-nav {
+  display: inline-block;
+  width: 226px;
+  margin: 1.3em 0 0 0;
+  float: right;
+  font-size: 1em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  border-radius: 0.3125em;
+  background-color: white;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  max-height: 350px;
+  max-height: calc(100vh - 80px);
+  content: 'viewport-units-buggyfill; max-height: $max-height;';
+  overflow: auto;
+}
+
+.mean-container .mean-nav ul {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.mean-container .mean-nav ul li {
+  position: relative;
+  width: 100%;
+  float: left;
+  overflow: hidden;
+}
+
+.mean-container .mean-nav ul li a {
+  display: inline-block;
+  width: calc(100% - 4.8em );
+  margin: 0.3125em 0 0.3125em 1em;
+  float: left;
+  text-align: left;
+  text-decoration: none;
+}
+
+.mean-container .mean-nav > ul > li:first-child > a {
+  margin-top: 0.8125em;
+}
+.mean-container .mean-nav > ul > li:first-child > a.mean-expand {
+  margin-top: 0.55em;
+}
+
+.mean-container .mean-nav > ul > li:last-child > a {
+  margin-bottom: 0.8125em;
+}
+.mean-container .mean-nav > ul > li:last-child > ul {
+  position: relative;
+  top: -0.5em;
+}
+
+.mean-container .mean-nav ul li li a {
+  width: calc(100% - 6.5em );
+  padding-left: 5%;
+  font-size: 0.85em;
+  margin-top: 0.4375em;
+  margin-bottom: 0.4375em;
+  text-shadow: none !important;
+  text-transform: uppercase;
+  visibility: visible;
+}
+
+.mean-container .mean-nav ul li li li a {
+  width: calc(100% - 7em );
+  padding-left: 10%;
+  font-style: italic;
+}
+
+.mean-container .mean-nav ul li li li li a {
+  width: calc(100% - 8em );
+  padding-left: 15%;
+}
+
+.mean-container .mean-nav ul li li li li li a {
+  width: calc(100% - 9.5em );
+  padding-left: 20%;
+}
+
+.mean-container .mean-nav ul li.mean-last a {
+  margin-bottom: 0.5em;
+  border-bottom: none;
+}
+
+.mean-container .mean-nav ul li a.mean-expand {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  width: 16px;
+  height: 16px;
+  margin: 0.2em 0.6em 0 0;
+  padding: 0;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.3em !important;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1;
+}
+.mean-container .mean-nav ul li a.mean-expand.mean-clicked {
+  line-height: 0.9;
+}
+
+.mean-container .mean-push {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  float: left;
+  clear: both;
+}
+
+.mean-nav .wrapper {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.mean-container .mean-bar, .mean-container .mean-bar * {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+.mean-remove {
+  display: none !important;
+}
+
+/*---------------------------------------------
+ * Banner
+ *--------------------------------------------*/
+#maranatha-banner {
+  position: relative;
+  width: 100%;
+  z-index: 6;
+}
+
+#maranatha-banner-image {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+#maranatha-banner-inner {
+  display: table;
+  position: relative;
+  height: 100%;
+  padding: 8% 0;
+}
+
+#maranatha-banner-title {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  padding: 0 2.5em;
+}
+#maranatha-banner-title div {
+  display: block;
+  margin-top: 1.3em;
+  margin-bottom: 0;
+}
+.maranatha-has-logo-image #maranatha-banner-title div {
+  margin-top: 1.6em;
+}
+
+/*---------------------------------------------
+ * Header Bottom
+ *--------------------------------------------*/
+#maranatha-header-bottom {
+  z-index: 5;
+  width: 100%;
+}
+.maranatha-has-entry-map #maranatha-header-bottom {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.92);
+}
+#maranatha-header-bottom.maranatha-has-header-archives.maranatha-has-breadcrumbs .ctfw-breadcrumbs {
+  margin-right: 0.9375em;
+}
+#maranatha-header-bottom.maranatha-has-header-archives.maranatha-has-breadcrumbs #maranatha-header-archives {
+  margin-left: 0.9375em;
+}
+
+#maranatha-header-bottom-inner {
+  margin-top: 0.8125em;
+  margin-bottom: 0.8125em;
+}
+
+.ctfw-breadcrumbs,
+#maranatha-header-archives,
+.maranatha-header-archive-dropdown {
+  display: inline-block;
+  padding: 3px 0;
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+
+.ctfw-breadcrumbs {
+  float: left;
+}
+.ctfw-breadcrumbs a {
+  font-weight: normal;
+}
+
+.maranatha-breadcrumb-separator {
+  display: inline-block;
+  padding: 0 0.3125em;
+  color: #777777;
+}
+
+#maranatha-header-archives {
+  margin: 0;
+  list-style: none;
+  float: right;
+}
+
+.maranatha-header-archive-top {
+  display: inline-block;
+  margin-right: 0.9375em;
+}
+.maranatha-header-archive-top:last-child {
+  margin-right: 0;
+}
+
+#maranatha-header-archives-section-name {
+  padding-right: 0.3125em;
+}
+
+.maranatha-header-archive-top-name {
+  white-space: nowrap;
+}
+.maranatha-header-archive-top-name .el {
+  margin-left: 0.4375em;
+  font-size: 0.8em;
+  position: relative;
+  top: -0.0625em;
+}
+.maranatha-header-archive-top-name.maranatha-dropdown-open {
+  color: black;
+}
+
+.maranatha-header-archive-dropdown {
+  display: none;
+  width: 15.625em;
+  margin-top: 0.3125em;
+  margin-left: -1.5625em;
+}
+.maranatha-header-archive-dropdown.maranatha-dropdown-anchor-right {
+  margin-left: 1.5625em;
+}
+.maranatha-header-archive-dropdown .maranatha-dropdown-panel {
+  padding-right: 1.6875em;
+  text-transform: uppercase;
+}
+.maranatha-header-archive-dropdown ul {
+  margin: 0;
+  list-style: none;
+  font-size: 1.05em;
+  line-height: 1.4;
+}
+.maranatha-header-archive-dropdown ul li {
+  margin: 0.5em 0;
+}
+.maranatha-header-archive-dropdown ul li:first-child {
+  margin-top: 0.3125em;
+}
+.maranatha-header-archive-dropdown ul li:last-child {
+  margin-bottom: 0.125em;
+}
+.maranatha-header-archive-dropdown ul li a {
+  display: inline-block;
+  max-width: 10em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.maranatha-header-archive-dropdown ul li .maranatha-header-archive-dropdown-count {
+  display: inline-block;
+  float: right;
+}
+
+.maranatha-header-archive-dropdown-all a {
+  font-weight: 600;
+}
+
+/**********************************************
+ * 8. FOOTER
+ **********************************************/
+/*---------------------------------------------
+ * Footer at Bottom
+ *--------------------------------------------*/
+body:not(.mce-content-body) {
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-height: 100vh;
+  content: 'viewport-units-buggyfill; min-height: 100vh;';
+}
+
+#maranatha-content {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+@media screen\0 {
+  body:not(.mce-content-body) {
+    display: block;
+    min-height: 0;
+  }
+
+  #maranatha-content {
+    -ms-flex: none;
+    flex: none;
+  }
+}
+/*---------------------------------------------
+ * Footer Widgets
+ *--------------------------------------------*/
+#maranatha-footer-widgets-row {
+  min-height: 300px;
+  background-color: #f7f7f7;
+}
+#maranatha-footer-widgets-row.maranatha-footer-widgets-row-light {
+  background-color: white;
+}
+
+#maranatha-footer-widgets {
+  margin-right: -6%;
+}
+#maranatha-footer-widgets aside {
+  display: block;
+  float: left;
+  margin-right: 6%;
+  width: 27.333%;
+  line-height: 1.8;
+}
+#maranatha-footer-widgets aside *:first-child {
+  margin-top: 0;
+}
+#maranatha-footer-widgets aside *:last-child {
+  margin-bottom: 0;
+}
+
+/*---------------------------------------------
+ * Footer Map
+ *--------------------------------------------*/
+#maranatha-footer .maranatha-map-section,
+#maranatha-footer #maranatha-map-section-canvas {
+  max-height: 450px;
+}
+
+/*---------------------------------------------
+ * Footer Icons / Notice
+ *--------------------------------------------*/
+#maranatha-footer-icons .maranatha-list-icons {
+  font-size: 2em;
+  text-align: center;
+}
+
+#maranatha-footer-notice {
+  font-size: 0.85em;
+  text-align: center;
+}
+
+/*---------------------------------------------
+ * Footer Stickies
+ *--------------------------------------------*/
+#maranatha-stickies {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+#maranatha-stickies-inner {
+  position: relative;
+}
+#maranatha-stickies-inner > aside {
+  position: absolute;
+  bottom: 0;
+  padding: 1.0625em 1.25em;
+  background-color: white;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+#maranatha-stickies-left {
+  left: 0;
+  border-radius: 0 0.3125em 0 0;
+  background-color: white;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+.maranatha-stickies-left-item {
+  margin-right: 1.125em;
+  display: inline-block;
+}
+.maranatha-stickies-left-item:last-child {
+  margin-right: 0;
+}
+
+/* Date */
+.maranatha-stickies-left-item-date {
+  padding-right: 0.625em;
+  color: #777777;
+}
+
+.maranatha-stickies-left-type-content {
+  max-width: 60%;
+}
+
+#maranatha-stickies-right {
+  right: 0;
+  border-radius: 0.3125em 0 0 0;
+  background-color: white;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+#maranatha-stickies-right ul {
+  list-style: none;
+  margin: 0;
+}
+#maranatha-stickies-right li {
+  display: inline-block;
+  margin-right: 1em;
+}
+#maranatha-stickies-right li:last-child {
+  margin-right: 0;
+}
+#maranatha-stickies-right .el {
+  padding-right: 0.3125em;
+  position: relative;
+}
+#maranatha-stickies-right .el.el-comment {
+  top: 0.125em;
+  font-size: 1.1em;
+}
+#maranatha-stickies-right .el.el-edit {
+  top: 0.0625em;
+}
+
+/**********************************************
+ * 9. WIDGETS
+ **********************************************/
+/*---------------------------------------------
+ * Shared Styles
+ *--------------------------------------------*/
+.maranatha-widget .maranatha-entry-short {
+  text-align: left;
+}
+.maranatha-widget .maranatha-entry-short > *,
+.maranatha-widget .maranatha-entry-short .maranatha-entry-short-header > * {
+  margin-top: 0.625em;
+}
+.maranatha-widget .maranatha-entry-short > *:first-child,
+.maranatha-widget .maranatha-entry-short .maranatha-entry-short-header > *:first-child {
+  margin-top: 0;
+}
+.maranatha-widget .maranatha-entry-short .maranatha-entry-short-image {
+  margin-top: 0.625em !important;
+}
+.maranatha-widget .maranatha-entry-short .maranatha-entry-short-header h3, .maranatha-widget .maranatha-entry-short .maranatha-entry-short-header .maranatha-nav-block-title {
+  margin-top: 0.625em;
+  padding-top: 0.4375em;
+  font-size: 1.2em !important;
+}
+.maranatha-widget .maranatha-entry-short:not(first-child) {
+  margin-top: 1.25em;
+}
+.maranatha-widget .maranatha-entry-content-short {
+  text-align: left;
+}
+.maranatha-widget .maranatha-entry-content-short {
+  line-height: 1.6;
+}
+
+.maranatha-widget-entry-icons li {
+  position: relative;
+  top: -0.125em;
+}
+.maranatha-widget-entry-icons .el {
+  position: relative;
+}
+.maranatha-widget-entry-icons .el-video {
+  font-size: 1.1em;
+}
+.maranatha-widget-entry-icons .el-headphones {
+  top: -0.0625em;
+}
+.maranatha-widget-entry-icons .el-file {
+  top: -0.0625em;
+  font-size: 0.95em;
+}
+
+.widget_ctfw-archives form,
+.widget_ctfw-categories form {
+  margin: 0;
+}
+.widget_ctfw-archives select,
+.widget_ctfw-categories select {
+  margin-left: 1px;
+  width: 100%;
+  max-width: 250px;
+}
+
+/*---------------------------------------------
+ * CT Locations
+ *--------------------------------------------*/
+.maranatha-location-short-image-and-map .maranatha-entry-short-map {
+  margin-top: 1.25em !important;
+}
+
+/*---------------------------------------------
+ * CT People
+ *--------------------------------------------*/
+.maranatha-widget .maranatha-person-short.maranatha-widget-entry-showing-image .maranatha-entry-short-header > *:not(.maranatha-entry-short-image) {
+  position: relative;
+  top: -0.0625em;
+  margin-left: 6.25em !important;
+}
+.maranatha-widget .maranatha-person-short.maranatha-widget-entry-showing-image .maranatha-entry-short-header h3, .maranatha-widget .maranatha-person-short.maranatha-widget-entry-showing-image .maranatha-entry-short-header .maranatha-nav-block-title {
+  margin-top: 0;
+  position: relative;
+  left: -1.25em;
+}
+.maranatha-widget .maranatha-person-short.maranatha-widget-entry-showing-image .maranatha-entry-short-image {
+  float: left;
+  width: 5em;
+  border-radius: 2.5em;
+  border-radius: 50%;
+}
+.maranatha-widget .maranatha-person-short.maranatha-widget-entry-showing-image .maranatha-entry-short-image img {
+  width: 5em;
+  height: auto;
+  border-radius: 2.5em;
+  border-radius: 50%;
+}
+
+/*---------------------------------------------
+ * WP Search
+ *--------------------------------------------*/
+.widget_search .maranatha-search-field {
+  margin-left: 0;
+}
+.widget_search .maranatha-search-button {
+  font-size: 1.5em;
+}
+
+/*---------------------------------------------
+ * WP Recent Comments
+ *--------------------------------------------*/
+.widget_recent_comments li {
+  margin-top: 1.25em;
+}
+
+/*---------------------------------------------
+ * WP Text Widget
+ *--------------------------------------------*/
+/*---------------------------------------------
+ * WP Tag Cloud Widget
+ *--------------------------------------------*/
+.widget_tag_cloud .tagcloud {
+  font-size: 0.67em !important;
+}
+.widget_tag_cloud a {
+  margin: 0.3125em 0.3125em 0.3125em 0;
+  font-size: 1em !important;
+}
+
+/*---------------------------------------------
+ * WP Calendar Widget
+ *--------------------------------------------*/
+.widget_calendar #wp-calendar {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.widget_calendar #wp-calendar caption,
+.widget_calendar #wp-calendar td,
+.widget_calendar #wp-calendar th {
+  text-align: center;
+  padding: 0.25em;
+}
+
+.widget_calendar #wp-calendar caption {
+  padding: 0 0 0.5em 0;
+  font-weight: 200;
+}
+.widget_calendar #wp-calendar caption a {
+  font-weight: 200;
+}
+
+.widget_calendar #wp-calendar th {
+  border: 0;
+  padding: 0.625em 0;
+  font-weight: normal;
+}
+
+.widget_calendar #wp-calendar tfoot td {
+  padding-top: 1.125em;
+  text-transform: uppercase;
+}
+
+.textwidget > :first-child {
+  margin-top: 0;
+}
+
+.textwidget > :last-child {
+  margin-bottom: 0 !important;
+}
+
+/*---------------------------------------------
+ * WP RSS Widget
+ *--------------------------------------------*/
+.widget_rss ul {
+  margin: 0;
+  list-style: none;
+}
+.widget_rss li {
+  line-height: 1.6;
+}
+.widget_rss li:not(:first-child) {
+  margin-top: 1.125em;
+}
+.widget_rss li:not(:first-child) a {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.widget_rss h2 img, .widget_rss .maranatha-h2 img, .widget_rss #reply-title img {
+  display: none;
+}
+.widget_rss .rss-date,
+.widget_rss .rssSummary,
+.widget_rss cite {
+  margin-top: 0.375em;
+  font-size: 0.9em;
+}
+.widget_rss .rss-date {
+  display: block;
+}
+.widget_rss cite {
+  display: block;
+  font-style: italic;
+}
+
+/*---------------------------------------------
+ * CT Highlight Widget
+ *--------------------------------------------*/
+.widget_ctfw-highlight {
+  max-width: 500px;
+}
+.widget_ctfw-highlight .maranatha-widget-title, .widget_ctfw-highlight .maranatha-widget-title h2, .widget_ctfw-highlight .maranatha-widget-title .maranatha-h2, .widget_ctfw-highlight .maranatha-widget-title #reply-title {
+  font-size: 1em;
+  margin: 0;
+}
+
+.maranatha-caption-image-inner {
+  background-color: #ededed;
+}
+
+/*---------------------------------------------
+ * CT Gallery Widget
+ *--------------------------------------------*/
+.maranatha-widget .gallery {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.maranatha-gallery-widget-link {
+  margin-top: 1.875em;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+/*---------------------------------------------
+ * CT Giving Widget
+ *--------------------------------------------*/
+.maranatha-giving-widget-button {
+  margin-top: 2.1875em;
+}
+
+/**********************************************
+ * 10. HOMEPAGE
+ **********************************************/
+/*---------------------------------------------
+ * Sections
+ *--------------------------------------------*/
+.maranatha-home-section {
+  display: table;
+  width: 100%;
+  position: relative;
+}
+.maranatha-home-section.maranatha-map-section {
+  display: block;
+}
+
+.maranatha-section-has-image .maranatha-home-section-color,
+.maranatha-section-no-image.maranatha-color-dark-bg .maranatha-home-section-color {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+}
+
+.maranatha-home-section-image {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+@media all and (max-device-width: 1024px) {
+  .maranatha-home-section-image {
+    background-attachment: scroll;
+  }
+}
+.maranatha-is-mobile .maranatha-home-section-image {
+  background-attachment: scroll;
+}
+
+.maranatha-home-section-inner {
+  display: table-cell;
+  position: relative;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.maranatha-home-section-content {
+  padding-left: 2em;
+  padding-right: 2em;
+  text-align: center;
+}
+.maranatha-home-section-content > *:first-child {
+  margin-top: 0;
+}
+.maranatha-home-section-content > *:last-child {
+  margin-bottom: 0;
+}
+.maranatha-home-section-content p {
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+.maranatha-home-section-content p a {
+  border-bottom: 1px solid;
+}
+.maranatha-body-font-lato .maranatha-home-section-content p b, .maranatha-body-font-open-sans .maranatha-home-section-content p b, .maranatha-body-font-roboto .maranatha-home-section-content p b, .maranatha-body-font-catamaran .maranatha-home-section-content p b, .maranatha-body-font-source-sans-pro .maranatha-home-section-content p b, .maranatha-body-font-titillium-web .maranatha-home-section-content p b, .maranatha-body-font-lato .maranatha-home-section-content p strong, .maranatha-body-font-open-sans .maranatha-home-section-content p strong, .maranatha-body-font-roboto .maranatha-home-section-content p strong, .maranatha-body-font-catamaran .maranatha-home-section-content p strong, .maranatha-body-font-source-sans-pro .maranatha-home-section-content p strong, .maranatha-body-font-titillium-web .maranatha-home-section-content p strong, .maranatha-body-font-lato .maranatha-home-section-content p a, .maranatha-body-font-open-sans .maranatha-home-section-content p a, .maranatha-body-font-roboto .maranatha-home-section-content p a, .maranatha-body-font-catamaran .maranatha-home-section-content p a, .maranatha-body-font-source-sans-pro .maranatha-home-section-content p a, .maranatha-body-font-titillium-web .maranatha-home-section-content p a {
+  font-weight: 400;
+}
+.maranatha-body-font-raleway .maranatha-home-section-content p b, .maranatha-body-font-ubuntu .maranatha-home-section-content p b, .maranatha-body-font-raleway .maranatha-home-section-content p strong, .maranatha-body-font-ubuntu .maranatha-home-section-content p strong, .maranatha-body-font-raleway .maranatha-home-section-content p a, .maranatha-body-font-ubuntu .maranatha-home-section-content p a {
+  font-weight: 500;
+}
+
+/*---------------------------------------------
+ * Header Section
+ *--------------------------------------------*/
+.js #maranatha-home-section-1 {
+  visibility: hidden;
+}
+#maranatha-home-section-1 .maranatha-home-section-content {
+  margin-top: 4.375em;
+}
+
+#maranatha-home-header-arrow {
+  position: absolute;
+  bottom: 2em;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.1rem;
+  opacity: 0.4;
+  transition: all 0.3s ease-out;
+}
+.maranatha-scrolled #maranatha-home-header-arrow {
+  opacity: 0;
+}
+
+/**********************************************
+ * 11. ENTRY STYLES
+ **********************************************/
+/*---------------------------------------------
+ * Shared Styles (Full + Short + Comments)
+ *--------------------------------------------*/
+.maranatha-entry-content, .maranatha-compact-content, .widget_text .textwidget, .maranatha-comment,
+.maranatha-entry-content-inner {
+  font-size: 1em;
+  line-height: 1.8;
+}
+.maranatha-entry-content > :first-child, .maranatha-compact-content > :first-child, .widget_text .textwidget > :first-child, .maranatha-comment > :first-child,
+.maranatha-entry-content-inner > :first-child {
+  margin-top: 0;
+}
+.maranatha-entry-content > :last-child, .maranatha-compact-content > :last-child, .widget_text .textwidget > :last-child, .maranatha-comment > :last-child,
+.maranatha-entry-content-inner > :last-child {
+  margin-bottom: 0;
+}
+
+/*---------------------------------------------
+ * Full / Single
+ *--------------------------------------------*/
+.maranatha-entry-full > .maranatha-entry-content #maranatha-loop-after-content, .maranatha-entry-full > .maranatha-compact-content #maranatha-loop-after-content, .widget_text .maranatha-entry-full > .textwidget #maranatha-loop-after-content, .maranatha-entry-full > .maranatha-comment #maranatha-loop-after-content,
+.archive #maranatha-content-inner > .maranatha-entry-content #maranatha-loop-after-content,
+.archive #maranatha-content-inner > .maranatha-compact-content #maranatha-loop-after-content,
+.archive .widget_text #maranatha-content-inner > .textwidget #maranatha-loop-after-content,
+.widget_text .archive #maranatha-content-inner > .textwidget #maranatha-loop-after-content,
+.archive #maranatha-content-inner > .maranatha-comment #maranatha-loop-after-content,
+.blog #maranatha-content-inner > .maranatha-entry-content #maranatha-loop-after-content,
+.blog #maranatha-content-inner > .maranatha-compact-content #maranatha-loop-after-content,
+.blog .widget_text #maranatha-content-inner > .textwidget #maranatha-loop-after-content,
+.widget_text .blog #maranatha-content-inner > .textwidget #maranatha-loop-after-content,
+.blog #maranatha-content-inner > .maranatha-comment #maranatha-loop-after-content,
+.search #maranatha-content-inner > .maranatha-entry-content #maranatha-loop-after-content,
+.search #maranatha-content-inner > .maranatha-compact-content #maranatha-loop-after-content,
+.search .widget_text #maranatha-content-inner > .textwidget #maranatha-loop-after-content,
+.widget_text .search #maranatha-content-inner > .textwidget #maranatha-loop-after-content,
+.search #maranatha-content-inner > .maranatha-comment #maranatha-loop-after-content {
+  font-size: 0.863em;
+}
+
+.maranatha-exceed-700-980, .maranatha-content-width-700 .maranatha-entry-full-content > blockquote, .maranatha-content-width-700 .maranatha-entry-full-content > .gallery, .maranatha-image-exceed-700-980 {
+  margin-left: -140px;
+  margin-right: -140px;
+}
+
+.maranatha-exceed-980-1170 {
+  margin-left: -70px;
+  margin-right: -70px;
+}
+
+.maranatha-entry-full-header {
+  overflow: hidden;
+}
+
+.maranatha-entry-full-map .maranatha-map-section,
+.maranatha-entry-full-map #maranatha-map-section-canvas {
+  max-height: 350px;
+}
+.maranatha-has-header-bottom .maranatha-entry-full-map #maranatha-map-section-content > * {
+  padding-top: 50px;
+}
+
+.maranatha-entry-full-meta {
+  margin: -1.5em -1.875em 0 0;
+  padding-top: 0.3125em;
+  list-style: none;
+  text-align: center;
+}
+.maranatha-entry-full-meta > li {
+  display: inline-block;
+  max-width: 21.875em;
+  margin: 1.5em 1.875em 0 0;
+  vertical-align: top;
+  line-height: 1.4;
+}
+
+.maranatha-entry-full-meta-label {
+  text-transform: uppercase;
+  font-size: 0.8em;
+}
+
+.maranatha-entry-full-meta-second-line {
+  font-style: italic;
+}
+
+.maranatha-entry-full-icons {
+  font-size: 1.4em;
+  position: relative;
+  top: -0.1875em;
+}
+
+.maranatha-entry-full-footer-item {
+  margin: 1.25em 0;
+  text-align: center;
+}
+.maranatha-entry-full-footer-item:first-child {
+  margin-top: 0;
+}
+
+.maranatha-entry-full-footer-terms {
+  margin-top: 0.625em;
+}
+.maranatha-entry-full-footer-terms:first-child {
+  margin-top: 0;
+}
+.maranatha-entry-full-footer-terms .el-tags {
+  position: relative;
+  top: 2px;
+  left: -1px;
+}
+
+.maranatha-entry-full-page-nav {
+  text-align: center;
+}
+.maranatha-entry-full-page-nav li {
+  margin: 0 0.5em;
+}
+.maranatha-entry-full-footer-no-terms.maranatha-no-comments-section .maranatha-entry-full-page-nav {
+  position: relative;
+  top: -1.125em;
+  padding-top: 1.125em;
+}
+
+.post-password-form {
+  font-size: 0.863em;
+}
+.post-password-form label {
+  font-weight: 600;
+}
+.post-password-form input[type=password] {
+  display: block;
+  margin: 20px 0;
+}
+
+/*---------------------------------------------
+ * Short / Multiple
+ *--------------------------------------------*/
+.maranatha-entry-short {
+  text-align: center;
+}
+.maranatha-entry-short > *,
+.maranatha-entry-short .maranatha-entry-short-header > * {
+  margin-top: 1.125em;
+}
+.maranatha-entry-short > *:first-child,
+.maranatha-entry-short .maranatha-entry-short-header > *:first-child {
+  margin-top: 0;
+}
+.maranatha-entry-short h2, .maranatha-entry-short .maranatha-h2, .maranatha-entry-short #reply-title,
+.maranatha-entry-short h3,
+.maranatha-entry-short .maranatha-nav-block-title {
+  margin-top: 1.125em;
+  margin-bottom: 0;
+  padding-top: 0.125em;
+  padding-bottom: 0.125em;
+  font-size: 1.4em !important;
+  font-weight: 400;
+}
+.maranatha-entry-short h2 a, .maranatha-entry-short .maranatha-h2 a, .maranatha-entry-short #reply-title a,
+.maranatha-entry-short h3 a,
+.maranatha-entry-short .maranatha-nav-block-title a {
+  font-weight: 400;
+}
+
+.maranatha-entry-short-image {
+  display: inline-block;
+  margin-top: 0.375em !important;
+}
+
+.maranatha-entry-short-meta {
+  margin-left: -0.625em;
+  margin-right: -0.625em;
+  margin-bottom: 0;
+  padding-top: 0.1875em;
+  font-size: 0.9em;
+}
+.maranatha-entry-short-meta > li {
+  margin: 0 0.625em;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 1.4;
+}
+
+.maranatha-entry-short-separator {
+  margin: 0 0.3125em;
+}
+
+.maranatha-entry-short-secondary {
+  color: #444444;
+  font-style: italic;
+}
+
+.maranatha-entry-content-short {
+  position: relative;
+  padding-bottom: 0.25em;
+  text-align: justify;
+  font-size: 0.9em;
+}
+
+.maranatha-entry-short-footer {
+  margin-bottom: 0.25em;
+  padding-top: 0.4375em;
+  font-size: 0.9em;
+}
+
+.maranatha-loop-one-column .maranatha-entry-short {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.maranatha-loop-one-column .maranatha-entry-short:last-child {
+  margin-bottom: 0;
+}
+.maranatha-loop-one-column .maranatha-entry-short > *,
+.maranatha-loop-one-column .maranatha-entry-short .maranatha-entry-short-header > * {
+  margin-top: 1.375em;
+}
+.maranatha-loop-one-column .maranatha-entry-short > *:first-child,
+.maranatha-loop-one-column .maranatha-entry-short .maranatha-entry-short-header > *:first-child {
+  margin-top: 0;
+}
+.maranatha-loop-one-column .maranatha-entry-short-meta,
+.maranatha-loop-one-column .maranatha-entry-content-short,
+.maranatha-loop-one-column .maranatha-entry-short-footer {
+  font-size: 1em;
+}
+
+.maranatha-loop-two-columns .maranatha-entry-short {
+  display: block;
+  float: left;
+  width: 44%;
+  width: calc(49.9% - 2.5em );
+  margin-bottom: 4.4em;
+}
+.maranatha-loop-two-columns .maranatha-entry-short:not(:nth-child(2n)) {
+  margin-right: 5em;
+}
+.maranatha-loop-two-columns .maranatha-entry-short:nth-last-of-type(-n+2) {
+  margin-bottom: 0;
+}
+
+.maranatha-loop-three-columns#maranatha-loop-multiple {
+  margin-bottom: -3.5625em;
+}
+.maranatha-loop-three-columns .maranatha-entry-short {
+  display: block;
+  float: left;
+  width: 27%;
+  width: calc(33.2% - 2.70833em );
+  margin-bottom: 3.4625em;
+}
+.maranatha-loop-three-columns .maranatha-entry-short h2, .maranatha-loop-three-columns .maranatha-entry-short .maranatha-h2, .maranatha-loop-three-columns .maranatha-entry-short #reply-title {
+  padding-top: 0.0625em;
+}
+.maranatha-loop-three-columns .maranatha-entry-short:not(:nth-child(3n)) {
+  margin-right: 4.0625em;
+}
+
+.sticky {
+  display: block;
+}
+
+/**********************************************
+ * 12. SERMONS
+ **********************************************/
+/*---------------------------------------------
+ * Full / Single
+ *--------------------------------------------*/
+#maranatha-sermon-buttons {
+  text-align: center;
+}
+
+#maranatha-sermon-download-dropdown {
+  width: 13.75em;
+  margin-left: -2.625em;
+  margin-top: -1.25em;
+}
+#maranatha-sermon-download-dropdown .maranatha-dropdown-panel {
+  padding-right: 1.25em;
+  text-transform: uppercase;
+  font-size: 0.85em;
+}
+#maranatha-sermon-download-dropdown ul {
+  margin: 0;
+  list-style: none;
+  line-height: 2;
+}
+#maranatha-sermon-download-dropdown .el {
+  display: inline-block;
+  width: 1.5em;
+}
+
+.maranatha-sermon-download-dropdown-filesize {
+  float: right;
+}
+
+/*---------------------------------------------
+ * Sermon Indexes
+ *--------------------------------------------*/
+.maranatha-sermon-index {
+  font-size: 0.863em;
+}
+.maranatha-sermon-index > * {
+  margin-top: 0;
+}
+.maranatha-sermon-index > *:last-child {
+  margin-bottom: 0;
+}
+
+#maranatha-sermon-index-header {
+  text-align: center;
+}
+#maranatha-sermon-index-header ul {
+  margin-top: 0;
+}
+
+#maranatha-sermon-index-none {
+  text-align: center;
+}
+
+.maranatha-sermon-index-list {
+  margin-bottom: -1.25em !important;
+  line-height: 1.3;
+}
+.maranatha-sermon-index-list ul {
+  margin-top: 0.5em;
+}
+.maranatha-sermon-index-list ul ul {
+  margin-left: 1.25em;
+}
+.maranatha-sermon-index-list > li {
+  padding-bottom: 1.25em;
+}
+.maranatha-sermon-index-list > li > .maranatha-list-item-count {
+  top: 0.375em;
+}
+.maranatha-sermon-index-list li li {
+  margin-bottom: 0.5em;
+}
+.maranatha-sermon-index-list li li a {
+  font-size: 1em;
+}
+.maranatha-sermon-index-list.maranatha-sermon-index-list-three-columns {
+  -moz-column-count: 3;
+  -webkit-column-count: 3;
+  column-count: 3;
+  -moz-column-gap: 6.25em;
+  -webkit-column-gap: 6.25em;
+  column-gap: 6.25em;
+}
+.maranatha-sermon-index-list.maranatha-sermon-index-list-two-columns {
+  -moz-column-count: 2;
+  -webkit-column-count: 2;
+  column-count: 2;
+  -moz-column-gap: 4.375em;
+  -webkit-column-gap: 4.375em;
+  column-gap: 4.375em;
+}
+
+#maranatha-sermon-books-list {
+  margin-bottom: -3.125em;
+}
+
+.maranatha-sermon-books-testament {
+  display: inline-block;
+  width: 44.5%;
+  margin-bottom: 3.125em;
+  vertical-align: top;
+}
+.maranatha-sermon-books-testament:nth-child(odd) {
+  margin-right: 10%;
+}
+.maranatha-sermon-books-testament h2, .maranatha-sermon-books-testament .maranatha-h2, .maranatha-sermon-books-testament #reply-title {
+  margin-top: 0;
+  text-align: center;
+}
+.maranatha-sermon-books-testament ul {
+  -moz-column-count: 2;
+  -webkit-column-count: 2;
+  column-count: 2;
+  -moz-column-gap: 3.75em;
+  -webkit-column-gap: 3.75em;
+  column-gap: 3.75em;
+}
+.maranatha-sermon-books-testament .maranatha-list-item-count {
+  font-size: 0.863em;
+}
+
+#maranatha-sermon-dates-list {
+  text-align: center;
+}
+#maranatha-sermon-dates-list ul {
+  margin: 0;
+}
+#maranatha-sermon-dates-list li {
+  margin: 0 0.9375em;
+  display: inline-block;
+  list-style: 0;
+  font-size: 0.863em;
+}
+
+.maranatha-sermon-dates-count {
+  position: relative;
+  top: -0.0625em;
+  margin-left: 0.3125em;
+  font-size: 0.9em;
+}
+
+#maranatha-sermon-series-list {
+  text-align: center;
+}
+#maranatha-sermon-series-list ul {
+  margin-top: 0;
+  margin-bottom: -2.625em;
+  margin-left: -1.5625em;
+  margin-right: -1.5625em;
+}
+#maranatha-sermon-series-list li {
+  display: inline-block;
+  width: 27%;
+  min-width: 250px;
+  margin-bottom: 2.525em;
+  margin-left: 1.5625em;
+  margin-right: 1.5625em;
+  list-style: none;
+  vertical-align: top;
+  line-height: 1.3;
+}
+#maranatha-sermon-series-list a {
+  display: inline-block;
+  line-height: 1.2;
+}
+#maranatha-sermon-series-list .maranatha-sermon-series-dates,
+#maranatha-sermon-series-list .maranatha-sermon-series-count {
+  margin-top: 0.3125em;
+  font-size: 0.85em;
+}
+
+/**********************************************
+ * 13. EVENTS
+ **********************************************/
+/*---------------------------------------------
+ * Calendar
+ *--------------------------------------------*/
+#maranatha-calendar {
+  position: relative;
+  font-size: 0.863em;
+}
+
+#maranatha-calendar-loading {
+  display: none;
+  opacity: 0.7;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  background-color: white;
+}
+
+#maranatha-calendar-header {
+  margin-top: -0.625em;
+}
+
+#maranatha-calendar-header-left {
+  float: left;
+  margin-right: 1.5625em;
+  line-height: 3;
+  vertical-align: middle;
+}
+
+#maranatha-calendar-title {
+  display: inline-block;
+  margin: 0;
+  vertical-align: middle;
+  font-size: 2.2em;
+  line-height: 1.8;
+}
+#maranatha-calendar-title span {
+  display: inline-block;
+  margin-right: 0.9375em;
+}
+
+#maranatha-calendar-title-category {
+  display: inline-block;
+}
+
+#maranatha-calendar-remove-category {
+  margin-left: 0.25em;
+  display: inline-block;
+  position: relative;
+}
+#maranatha-calendar-remove-category a {
+  position: relative;
+  top: -0.4375em;
+  font-size: 0.4em;
+  color: rgba(119, 119, 119, 0.7);
+}
+
+#maranatha-calendar-header-right {
+  float: right;
+  padding-top: 0.125em;
+  line-height: 3;
+  font-size: 1.3em;
+}
+#maranatha-calendar-header-right a {
+  position: relative;
+  margin-left: 0;
+  padding: 0 0.15625em;
+  text-align: center;
+}
+#maranatha-calendar-header-right a:first-child {
+  margin-left: 0;
+}
+#maranatha-calendar-header-right .el-calendar {
+  font-size: 1.1em;
+}
+#maranatha-calendar-header-right .el-folder {
+  top: 0.0625em;
+  font-size: 1.2em;
+}
+
+.maranatha-calendar-dropdown {
+  margin-top: 0.625em;
+  left: 0.9375em;
+  text-transform: uppercase;
+  font-size: 0.85em;
+}
+.maranatha-calendar-dropdown .maranatha-dropdown-panel,
+.maranatha-calendar-dropdown .maranatha-dropdown-menu {
+  position: relative;
+  right: -1.25em;
+}
+
+#maranatha-calendar-month-dropdown {
+  width: 13.75em;
+  line-height: 2;
+}
+
+.maranatha-calendar-month-dropdown-year {
+  margin-top: 0.75em;
+  font-size: 1.2em;
+}
+.maranatha-calendar-month-dropdown-year:first-child {
+  margin-top: 0;
+}
+
+.maranatha-calendar-month-dropdown-months {
+  margin: 0;
+  list-style: none;
+}
+.maranatha-calendar-month-dropdown-months li {
+  display: inline-block;
+  width: 23%;
+}
+
+#maranatha-calendar-category-dropdown ul {
+  padding-top: 0.625em;
+  padding-bottom: 0.5em;
+}
+
+#maranatha-calendar-table {
+  margin-top: 1.5625em;
+  margin-bottom: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+  border: 0 !important;
+  overflow: hidden;
+}
+
+.maranatha-calendar-table-top {
+  height: 3px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+#maranatha-calendar-table th,
+#maranatha-calendar-table td {
+  border: 0;
+  padding: 0;
+  position: relative;
+}
+
+.maranatha-calendar-table-header-row {
+  height: 37px;
+}
+
+.maranatha-calendar-table-header {
+  width: 14.28571%;
+  border-width: 1px !important;
+  border-style: solid !important;
+  vertical-align: middle;
+}
+
+.maranatha-calendar-table-header-content {
+  padding-bottom: 3px !important;
+  font-size: 1em;
+  line-height: 1;
+  text-align: center !important;
+  text-transform: uppercase;
+  color: white;
+}
+
+.maranatha-calendar-table-header-short {
+  display: none;
+}
+
+.maranatha-calendar-table-week-first .maranatha-calendar-table-day {
+  border-top-width: 0 !important;
+}
+
+.maranatha-calendar-table-day {
+  vertical-align: top;
+  border-width: 0 0 1px 1px !important;
+  border-style: solid !important;
+  border-color: #e5e5e5 !important;
+}
+
+.maranatha-calendar-table-day-1 {
+  border-left-width: 1px !important;
+}
+
+.maranatha-calendar-table-day-7 {
+  border-right-width: 1px !important;
+}
+
+.maranatha-calendar-table-day-content-container {
+  padding: 0.3125em 1em 0.625em 0.625em;
+  overflow: hidden;
+  min-height: 120px;
+}
+
+.maranatha-calendar-table-day-heading {
+  margin: 0.125em 0 0.0625em 0;
+  font-size: 0.9em;
+  text-align: right;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.maranatha-calendar-table-day-label {
+  display: inline-block;
+  margin-right: 0.1875em;
+  vertical-align: middle;
+}
+
+.maranatha-calendar-table-day-number {
+  vertical-align: middle;
+}
+
+a.maranatha-calendar-table-day-number {
+  display: none;
+}
+
+.maranatha-calendar-table-day-events {
+  list-style: none;
+  margin: 0;
+}
+.maranatha-calendar-table-day-events li {
+  font-size: 0.9em;
+  line-height: 1.8;
+  white-space: nowrap;
+}
+
+.maranatha-calendar-table-day-event-time {
+  padding-left: 0.1875em;
+}
+
+.maranatha-calendar-table-day-today {
+  z-index: 10;
+  background-color: #fff8e9;
+}
+
+.maranatha-calendar-table-day-past {
+  background-color: #f9f9f9;
+}
+.maranatha-calendar-table-day-past .maranatha-calendar-table-day-heading {
+  color: #aaa;
+}
+
+.maranatha-calendar-table-day-other-month {
+  background-color: #f2f2f2;
+}
+.maranatha-calendar-table-day-other-month:not(.maranatha-calendar-table-day-today) .maranatha-calendar-table-day-heading,
+.maranatha-calendar-table-day-other-month:not(.maranatha-calendar-table-day-today) .maranatha-calendar-table-day-label {
+  color: #aaa;
+}
+
+.maranatha-tooltipster-calendar {
+  margin-left: 2.5em;
+  margin-right: 2.5em;
+}
+.maranatha-tooltipster-calendar .tooltipster-content {
+  border-radius: 0.3125em;
+  background-color: white;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  max-width: 25em;
+  padding: 0 0 1.875em 0;
+  overflow: hidden;
+  font-size: 16px;
+}
+.maranatha-tooltipster-calendar > *,
+.maranatha-tooltipster-calendar header > * {
+  margin-left: 1.5625em;
+  margin-right: 1.5625em;
+}
+.maranatha-tooltipster-calendar .maranatha-entry-no-image header > *:first-child {
+  margin-top: 1.125em !important;
+}
+.maranatha-tooltipster-calendar .maranatha-entry-short-image {
+  margin-top: 0 !important;
+  margin-right: 0;
+  margin-left: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.maranatha-tooltipster-calendar .maranatha-entry-short-header h2, .maranatha-tooltipster-calendar .maranatha-entry-short-header .maranatha-h2, .maranatha-tooltipster-calendar .maranatha-entry-short-header #reply-title {
+  padding-top: 0.125em;
+  font-size: 1.2em !important;
+}
+.maranatha-tooltipster-calendar .maranatha-entry-short-footer {
+  padding-top: 0.9375em;
+  font-size: 0.835em;
+}
+
+#maranatha-calendar-list {
+  display: none;
+}
+#maranatha-calendar-list h3, #maranatha-calendar-list .maranatha-nav-block-title {
+  text-align: center;
+  display: none;
+  font-size: 1.9em;
+  font-weight: 200;
+  padding-top: 0.25em;
+}
+#maranatha-calendar-list h3 a, #maranatha-calendar-list .maranatha-nav-block-title a {
+  font-weight: 200;
+}
+#maranatha-calendar-list .maranatha-event-short {
+  display: none;
+}
+#maranatha-calendar-list .maranatha-event-short:first-of-type {
+  margin-top: 0;
+}
+#maranatha-calendar-list .maranatha-entry-short-image {
+  max-width: 400px;
+}
+#maranatha-calendar-list .maranatha-entry-short-meta {
+  font-size: 1.08em;
+}
+#maranatha-calendar-list .maranatha-event-short-date {
+  display: none;
+}
+#maranatha-calendar-list .maranatha-entry-short-footer {
+  display: none;
+}
+
+/**********************************************
+ * 14. PEOPLE
+ **********************************************/
+/*---------------------------------------------
+ * Full / Single
+ *--------------------------------------------*/
+#maranatha-person-header-content {
+  display: table;
+  margin: 0 auto;
+}
+
+#maranatha-person-image-column {
+  display: table-cell;
+  vertical-align: top;
+}
+
+#maranatha-person-image {
+  width: 7.5em;
+  border-radius: 3.75em;
+  border-radius: 50%;
+}
+#maranatha-person-image img {
+  width: 7.5em;
+  height: auto;
+  border-radius: 3.75em;
+  border-radius: 50%;
+}
+
+#maranatha-person-meta {
+  display: table-cell;
+  vertical-align: middle;
+}
+.maranatha-person-has-image #maranatha-person-meta {
+  padding-left: 2.5em;
+  padding-top: 0.25em;
+}
+
+/*---------------------------------------------
+ * Short / Multiple
+ *--------------------------------------------*/
+.maranatha-person-short-image {
+  border-radius: 5em;
+  border-radius: 50%;
+}
+.maranatha-person-short-image img {
+  width: 10em;
+  height: auto;
+  border-radius: 5em;
+  border-radius: 50%;
+}
+
+/**********************************************
+ * 15. ATTACHMENTS
+ **********************************************/
+.attachment .maranatha-entry-full > *:last-child {
+  margin-bottom: 0;
+}
+.attachment .maranatha-nav-left, .attachment .maranatha-nav-right {
+  width: 100%;
+  position: relative;
+  top: -5px;
+  text-align: center;
+}
+
+.maranatha-attachment-image .wp-caption {
+  max-width: none;
+  margin: 0;
+}
+.maranatha-attachment-image .wp-caption-text {
+  margin-top: 0.9375em;
+}
+
+.maranatha-attachment-button {
+  text-align: center;
+}
+
+/**********************************************
+ * 16. GALLERIES
+ **********************************************/
+/*---------------------------------------------
+ * Gallery (Single)
+ *--------------------------------------------*/
+.gallery {
+  position: relative;
+  font-size: 0.863em;
+}
+
+.gallery-item {
+  display: block;
+  position: relative;
+  float: left;
+  margin: 0;
+}
+
+.gallery-icon img {
+  border-radius: 0;
+}
+
+.gallery-caption {
+  position: absolute;
+  left: 0;
+  bottom: 12%;
+  max-width: 90%;
+  padding: 0.6875em 0.8125em 0.75em 0.625em;
+  line-height: 1;
+  border-top-right-radius: 0.1875em;
+  border-bottom-right-radius: 0.1875em;
+  opacity: 0;
+  font-size: 0.9em;
+  font-style: italic;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #444444;
+  cursor: pointer;
+  backface-visibility: hidden;
+}
+.gallery-item:hover .gallery-caption {
+  opacity: 1;
+}
+
+.gallery-columns-6 .gallery-caption,
+.gallery-columns-7 .gallery-caption,
+.gallery-columns-8 .gallery-caption,
+.gallery-columns-9 .gallery-caption,
+.maranatha-widget .gallery-caption {
+  display: none;
+}
+
+.gallery-columns-1 {
+  text-align: center;
+}
+.gallery-columns-1 .gallery-item {
+  display: inline-block;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+}
+
+.gallery-columns-2 .gallery-item {
+  max-width: 50%;
+}
+
+.gallery-columns-3 .gallery-item {
+  max-width: 33.33333%;
+}
+
+.gallery-columns-4 .gallery-item {
+  max-width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+  max-width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+  max-width: 16.66667%;
+}
+
+.gallery-columns-7 .gallery-item {
+  max-width: 14.28571%;
+}
+
+.gallery-columns-8 .gallery-item {
+  max-width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+  max-width: 11.11111%;
+}
+
+/*---------------------------------------------
+ * Galleries (Multiple)
+ *--------------------------------------------*/
+.maranatha-galleries-list {
+  font-size: 0.863em;
+}
+.maranatha-galleries-list img {
+  border-radius: 0;
+}
+
+/**********************************************
+ * 17. COMMENTS
+ **********************************************/
+/*---------------------------------------------
+ * Comments Section
+ *--------------------------------------------*/
+#maranatha-comments-title {
+  text-align: center;
+}
+
+/*---------------------------------------------
+ * Comment List
+ *--------------------------------------------*/
+.maranatha-comments,
+.maranatha-comments ul.children {
+  margin: 0;
+  list-style: none;
+}
+
+.maranatha-comment-meta {
+  min-height: 4.375em;
+}
+
+.maranatha-comment-avatar {
+  margin-right: 1.5em;
+  float: left;
+}
+.maranatha-comment-avatar img {
+  width: 4.375em;
+  height: 4.375em;
+  border-radius: 2.1875em;
+  border-radius: 50%;
+}
+
+.maranatha-comment-title {
+  margin: 0 !important;
+  color: black !important;
+  font-weight: normal;
+}
+.maranatha-comment-title a {
+  font-weight: normal;
+}
+
+.maranatha-comment-meta time {
+  display: inline-block;
+  padding-top: 0.9375em;
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+.maranatha-comment-meta a time,
+.maranatha-comment-meta a:hover time {
+  color: #444444;
+}
+
+.maranatha-comment-time {
+  display: block;
+}
+
+.maranatha-comment-buttons {
+  float: right;
+  position: relative;
+  margin-left: 1.25em;
+  top: -1.5625em;
+}
+
+.maranatha-comment-content {
+  margin-top: 1.75em;
+}
+
+.maranatha-comment,
+.maranatha-comment #respond {
+  margin-left: 6%;
+}
+
+.maranatha-comment.depth-1 {
+  margin-left: 0;
+}
+
+.single-post .bypostauthor > article {
+  padding: 2.1875em 2.5em;
+  border-radius: 0.3125em;
+  background-color: #f7f7f7;
+}
+
+/*---------------------------------------------
+ * Comment Form
+ *--------------------------------------------*/
+#respond {
+  position: relative;
+  top: -0.5em;
+  padding-bottom: 0.5em;
+}
+
+#cancel-comment-reply-link {
+  position: relative;
+  bottom: 0.3125em;
+  margin-left: 1.5625em;
+  font-size: 0.55em;
+  font-weight: normal !important;
+  text-transform: uppercase;
+}
+
+.comment-form-author,
+.comment-form-email,
+.comment-form-url {
+  position: relative;
+  margin: 2.1875em 0;
+}
+
+#respond label {
+  line-height: 36px;
+  text-transform: uppercase;
+  font-size: 0.8em;
+}
+
+.comment-form-comment label {
+  display: none;
+}
+
+#respond .required {
+  margin-left: 0.3125em;
+}
+
+#respond input[type=text],
+#respond input[type=email],
+#respond input[type=url] {
+  position: absolute;
+  left: 90px;
+  width: 260px;
+}
+
+.comment-form-comment {
+  clear: left;
+}
+.comment-form-comment textarea {
+  width: 95%;
+}
+
+#respond label.error {
+  font-weight: normal;
+}
+
+.comment-form-author label.error,
+.comment-form-email label.error,
+.comment-form-url label.error {
+  position: absolute;
+  left: 375px;
+  white-space: nowrap;
+}
+
+p.comment-form-comment label.error {
+  position: relative;
+  top: 0;
+  display: block;
+}
+
+.form-allowed-tags {
+  display: none;
+}
+
+#respond .form-submit {
+  margin-bottom: 0;
+}
+.logged-in #respond .form-submit {
+  margin-top: 0 !important;
+}
+
+/**********************************************
+ * 18. PLUGINS
+ **********************************************/
+/*---------------------------------------------
+ * Contact Form 7
+ *--------------------------------------------*/
+div.wpcf7 input {
+  max-width: 95%;
+}
+
+span.wpcf7-form-control-wrap {
+  width: 100%;
+}
+
+div.wpcf7-mail-sent-ok,
+div.wpcf7-mail-sent-ng,
+div.wpcf7-spam-blocked,
+div.wpcf7-validation-errors {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font-weight: normal;
+  font-style: italic;
+}
+
+span.wpcf7-not-valid-tip {
+  top: 30%;
+  left: 30%;
+  width: auto;
+  padding: 0.3125em 0 0 0;
+  border: 0;
+  font-size: 0.9em;
+  font-weight: normal;
+  font-style: italic;
+}
+
+span.wpcf7-not-valid-tip,
+div.wpcf7-validation-errors {
+  background: none;
+  color: #222;
+}
+
+span.wpcf7-not-valid-tip-no-ajax {
+  padding-top: 0.3125em;
+  font-size: 1em;
+  font-weight: 600;
+  color: #222;
+}
+
+span.wpcf7-form-control-wrap textarea {
+  max-width: 100% !important;
+}
+
+/*---------------------------------------------
+ * Jetpack
+ *--------------------------------------------*/
+/* Hide the Jetpack stat smiley (used when JS off) */
+#wpstats {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 0;
+  left: 30000px;
+  overflow: hidden;
+}
+
+/**********************************************
+ * 19. EDITOR STYLES
+ **********************************************/
+.mce-content-body {
+  margin: 1.875em;
+}
+.mce-content-body > *:first-child {
+  margin-top: 0;
+}
+.mce-content-body > *:last-child {
+  margin-bottom: 0;
+}
+
+/**********************************************
+ * 20. MEDIA QUERIES
+ **********************************************/
+/*----------------------------------------------
+ * Viewport Padding
+ *---------------------------------------------*/
+@media only screen and (max-width: 1300px) {
+  #maranatha-header .maranatha-centered-large,
+  #maranatha-footer .maranatha-centered-large {
+    max-width: 88%;
+  }
+
+  #maranatha-content {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+
+  .maranatha-no-viewport-padding, .maranatha-nav-blocks, .maranatha-entry-full-map {
+    margin-left: -7%;
+    margin-right: -7%;
+  }
+}
+/*----------------------------------------------
+ * 1120px
+ *---------------------------------------------*/
+@media only screen and (max-width: 1120px) {
+  .maranatha-exceed-980-1170 {
+    margin-left: -7%;
+    margin-right: -7%;
+  }
+}
+/*----------------------------------------------
+ * 1024px - Tablet Landscape, Netbook
+ *---------------------------------------------*/
+@media only screen and (max-width: 1024px) {
+  html {
+    font-size: 90%;
+  }
+
+  .maranatha-nav-block-title {
+    font-size: 1.4em;
+  }
+
+  #maranatha-sermon-download-dropdown {
+    margin-left: -3.25em !important;
+  }
+
+  #maranatha-calendar-header-right {
+    padding-top: 0;
+  }
+
+  .maranatha-calendar-table-day-content-container {
+    min-height: 100px;
+  }
+}
+/*----------------------------------------------
+ * 980px
+ *---------------------------------------------*/
+@media only screen and (max-width: 980px) {
+  .maranatha-exceed-700-980, .maranatha-content-width-700 .maranatha-entry-full-content > blockquote, .maranatha-content-width-700 .maranatha-entry-full-content > .gallery, .maranatha-image-exceed-700-980 {
+    margin-left: -7%;
+    margin-right: -7%;
+  }
+
+  #maranatha-header-archives-section-name {
+    display: none;
+  }
+}
+/*----------------------------------------------
+ * 900px
+ *---------------------------------------------*/
+@media only screen and (max-width: 900px) {
+  .maranatha-sermon-books-testament ul {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+  }
+
+  #maranatha-stickies {
+    display: none !important;
+  }
+}
+/*----------------------------------------------
+ * 860px
+ *---------------------------------------------*/
+@media only screen and (max-width: 860px) {
+  blockquote.maranatha-exceed-700-980, .maranatha-content-width-700 .maranatha-entry-full-content > blockquote, .maranatha-content-width-700 .maranatha-entry-full-content > blockquote.gallery, blockquote.maranatha-image-exceed-700-980 {
+    padding: 0 1.5em 0 3.625em;
+  }
+  blockquote.maranatha-exceed-700-980:before, .maranatha-content-width-700 .maranatha-entry-full-content > blockquote:before, .maranatha-content-width-700 .maranatha-entry-full-content > blockquote.gallery:before, blockquote.maranatha-image-exceed-700-980:before {
+    left: 0.3125em;
+  }
+}
+/*----------------------------------------------
+ * 768px - Tablet Portrait
+ *---------------------------------------------*/
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 80%;
+  }
+
+  .maranatha-nav-block-title {
+    font-size: 1.3em;
+  }
+
+  ul.page-numbers .el {
+    margin-top: -0.0625em !important;
+  }
+
+  .maranatha-header-archive-top-name .el {
+    top: 0;
+  }
+
+  #maranatha-home-header-arrow {
+    display: none;
+  }
+
+  .maranatha-calendar-dropdown {
+    font-size: 1em;
+  }
+
+  .maranatha-galleries-list .gallery-item {
+    max-width: 50%;
+  }
+}
+/*----------------------------------------------
+ * 767px - Just Under Tablet Portrait
+ *---------------------------------------------*/
+@media only screen and (max-width: 767px) {
+  #maranatha-footer-widgets {
+    margin-right: 0;
+  }
+  #maranatha-footer-widgets aside {
+    margin-bottom: 2.8125em;
+    display: block;
+    float: none;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 500px;
+  }
+  #maranatha-footer-widgets aside:last-child {
+    margin-bottom: 0;
+  }
+  #maranatha-footer-widgets aside > h2, #maranatha-footer-widgets aside > .maranatha-h2, #maranatha-footer-widgets aside > #reply-title {
+    text-align: center;
+  }
+
+  .maranatha-widget .maranatha-person-short.maranatha-widget-entry-showing-image .maranatha-entry-short-header > *:not(.maranatha-entry-short-image) {
+    margin-left: 5.625em !important;
+  }
+  .maranatha-widget .maranatha-person-short.maranatha-widget-entry-showing-image .maranatha-entry-short-header h3, .maranatha-widget .maranatha-person-short.maranatha-widget-entry-showing-image .maranatha-entry-short-header .maranatha-nav-block-title {
+    left: -1.625em;
+  }
+  .maranatha-widget .maranatha-person-short.maranatha-widget-entry-showing-image .maranatha-entry-short-image {
+    width: 4.25em;
+    border-radius: 2.125em;
+    border-radius: 50%;
+  }
+  .maranatha-widget .maranatha-person-short.maranatha-widget-entry-showing-image .maranatha-entry-short-image img {
+    width: 4.25em;
+    border-radius: 2.125em;
+    border-radius: 50%;
+  }
+}
+/*----------------------------------------------
+ * 700px - Large / Landscape Phone
+ *---------------------------------------------*/
+@media only screen and (max-width: 700px) {
+  #maranatha-content h1, #maranatha-content .maranatha-h1, #maranatha-content .maranatha-home-section-content h2, .maranatha-home-section-content #maranatha-content h2, #maranatha-content .maranatha-home-section-content .maranatha-h2, .maranatha-home-section-content #maranatha-content .maranatha-h2, #maranatha-content .maranatha-home-section-content #reply-title, .maranatha-home-section-content #maranatha-content #reply-title, #maranatha-content #maranatha-comments-title,
+  #maranatha-content .maranatha-h1,
+  #maranatha-content .maranatha-home-section-content h2,
+  .maranatha-home-section-content #maranatha-content h2,
+  #maranatha-content .maranatha-home-section-content .maranatha-h2,
+  .maranatha-home-section-content #maranatha-content .maranatha-h2,
+  #maranatha-content .maranatha-home-section-content #reply-title,
+  .maranatha-home-section-content #maranatha-content #reply-title {
+    font-size: 1.8em;
+  }
+
+  h2, .maranatha-h2, #reply-title,
+  .maranatha-h2,
+  #reply-title {
+    font-size: 1.6em;
+  }
+
+  h3, .maranatha-nav-block-title,
+  .maranatha-h3,
+  #maranatha-footer-widgets aside h2,
+  #maranatha-footer-widgets aside .maranatha-h2,
+  #maranatha-footer-widgets aside #reply-title,
+  .maranatha-loop-two-columns .maranatha-entry-short h2,
+  .maranatha-loop-two-columns .maranatha-entry-short .maranatha-h2,
+  .maranatha-loop-two-columns .maranatha-entry-short #reply-title {
+    font-size: 1.4em;
+  }
+
+  h4,
+  .maranatha-h4,
+  .widget_calendar #wp-calendar caption,
+  .maranatha-loop-three-columns .maranatha-entry-short h2,
+  .maranatha-loop-three-columns .maranatha-entry-short .maranatha-h2,
+  .maranatha-loop-three-columns .maranatha-entry-short #reply-title,
+  .maranatha-sermon-index-list > li > a,
+  #maranatha-sermon-dates-list a {
+    font-size: 1.2em;
+  }
+
+  h5,
+  .maranatha-h5,
+  .maranatha-caption-image-title,
+  #maranatha-sermon-series-list a {
+    font-size: 1.1em;
+  }
+
+  h6,
+  .maranatha-h6 {
+    font-size: 1em;
+  }
+
+  blockquote {
+    font-size: 1.2em;
+    padding-right: 1.875em;
+  }
+
+  .maranatha-circle-button,
+  .maranatha-circle-button span,
+  .maranatha-circle-buttons-list li,
+  .maranatha-circle-buttons-list a {
+    width: 5.8rem;
+    height: 5.8rem;
+    border-radius: 2.9rem;
+  }
+
+  .maranatha-circle-button-small,
+  .maranatha-circle-button-small span,
+  .maranatha-circle-buttons-list-small li,
+  .maranatha-circle-buttons-list-small a {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1.5rem;
+  }
+
+  .maranatha-circle-button span,
+  .maranatha-circle-buttons-list a {
+    padding: 0 0.75rem;
+    font-size: 0.76em;
+  }
+
+  .maranatha-circle-button span.el,
+  .maranatha-circle-button a.el,
+  .maranatha-circle-buttons-list span.el,
+  .maranatha-circle-buttons-list a.el {
+    font-size: 2.4em;
+  }
+  .maranatha-circle-button a,
+  .maranatha-circle-buttons-list a {
+    line-height: 1.2;
+  }
+  .maranatha-circle-button a span.el,
+  .maranatha-circle-buttons-list a span.el {
+    padding-bottom: 0.4375rem;
+  }
+
+  .maranatha-circle-button-small span.el,
+  .maranatha-circle-buttons-list-small a.el {
+    font-size: 1.36em;
+  }
+
+  .maranatha-circle-buttons-list {
+    margin-bottom: -1.02rem !important;
+  }
+  .maranatha-circle-buttons-list li {
+    margin: 0 0.6rem 1.02rem 0.6rem;
+  }
+
+  .maranatha-circle-buttons-list-small {
+    margin-bottom: -0.75rem !important;
+  }
+  .maranatha-circle-buttons-list-small li {
+    margin: 0 0.375rem 0.75rem 0.375rem;
+  }
+
+  .maranatha-map-section,
+  #maranatha-map-section-canvas {
+    min-height: 300px !important;
+    max-height: 450px;
+  }
+
+  #maranatha-map-section-info {
+    min-width: 200px;
+    padding: 1.5625em;
+  }
+
+  #maranatha-map-section-info-list li:nth-child(3),
+  #maranatha-map-section-info-list li:nth-child(4) {
+    display: none;
+  }
+
+  .maranatha-home-section .maranatha-map-section-multiple-locations .maranatha-map-button-more-item,
+  #maranatha-footer .maranatha-map-section-multiple-locations .maranatha-map-button-more-item {
+    display: inline-block;
+  }
+  .maranatha-home-section #maranatha-map-section-buttons li:not(.maranatha-map-button-more-item),
+  #maranatha-footer #maranatha-map-section-buttons li:not(.maranatha-map-button-more-item) {
+    display: none;
+  }
+
+  .maranatha-nav-block {
+    width: 100%;
+    padding-bottom: 25%;
+  }
+  .maranatha-nav-block.maranatha-nav-block-empty {
+    display: none;
+  }
+
+  .maranatha-nav-block-left {
+    border-right-width: 0;
+  }
+  .maranatha-nav-block-has-both .maranatha-nav-block-left {
+    border-width: 0 0 1px 0;
+  }
+
+  .maranatha-nav-block-title {
+    font-size: 2.1em;
+  }
+
+  .maranatha-author-avatar {
+    position: relative;
+    margin: 0 auto;
+    width: 6.875em;
+    height: 6.875em;
+  }
+  .single .maranatha-author-avatar {
+    left: 0;
+  }
+  .maranatha-author-avatar img {
+    border-radius: 3.4375em;
+    border-radius: 50%;
+  }
+
+  .maranatha-author-content {
+    margin-left: 0;
+    text-align: center;
+  }
+  .maranatha-author-content h2, .maranatha-author-content .maranatha-h2, .maranatha-author-content #reply-title {
+    display: block;
+    margin: 1.5625em 0 0 0;
+  }
+
+  .maranatha-author-box-archive {
+    position: relative;
+    top: 0;
+    float: none;
+    margin: 2.1875em 0;
+  }
+
+  .maranatha-vertical-margin-small, .alignnone, .aligncenter, div.wpcf7 {
+    margin-top: 2.34375rem;
+    margin-bottom: 2.34375rem;
+  }
+
+  .maranatha-vertical-padding-small, .maranatha-footer-no-icons #maranatha-footer-icons-notice {
+    padding-top: 2.34375rem;
+    padding-bottom: 2.34375rem;
+  }
+
+  .maranatha-vertical-margin-top-small, #maranatha-footer-icons-notice > *:nth-child(2), #maranatha-sermon-buttons, #maranatha-calendar-list .maranatha-event-short, #respond .form-submit {
+    margin-top: 2.34375rem;
+  }
+
+  .maranatha-vertical-padding-top-small {
+    padding-top: 2.34375rem;
+  }
+
+  .maranatha-vertical-margin-bottom-small, #respond .comment-notes,
+  #respond .logged-in-as {
+    margin-bottom: 2.34375rem;
+  }
+
+  .maranatha-vertical-padding-bottom-small {
+    padding-bottom: 2.34375rem;
+  }
+
+  .maranatha-vertical-margin-small-content, p,
+  ul,
+  ol,
+  dl,
+  table,
+  q {
+    margin-top: 1.64063rem;
+    margin-bottom: 1.64063rem;
+  }
+
+  .maranatha-vertical-padding-small-content {
+    padding-top: 1.64063rem;
+    padding-bottom: 1.64063rem;
+  }
+
+  .maranatha-vertical-margin-top-small-content {
+    margin-top: 1.64063rem;
+  }
+
+  .maranatha-vertical-padding-top-small-content {
+    padding-top: 1.64063rem;
+  }
+
+  .maranatha-vertical-margin-bottom-small-content {
+    margin-bottom: 1.64063rem;
+  }
+
+  .maranatha-vertical-padding-bottom-small-content {
+    padding-bottom: 1.64063rem;
+  }
+
+  .maranatha-vertical-margin-medium, hr, .maranatha-entry-full-footer-has-terms .maranatha-entry-full-page-nav {
+    margin-top: 3.28125rem;
+    margin-bottom: 3.28125rem;
+  }
+
+  .maranatha-vertical-padding-medium, #maranatha-footer-widgets-row, .maranatha-footer-has-icons #maranatha-footer-icons-notice {
+    padding-top: 3.28125rem;
+    padding-bottom: 3.28125rem;
+  }
+
+  .maranatha-vertical-margin-top-medium, .maranatha-pagination, #maranatha-content, .maranatha-entry-full-footer, .maranatha-sermon-index, .maranatha-entry-has-content #maranatha-calendar, #maranatha-calendar-list, .attachment .maranatha-entry-content, .attachment .maranatha-compact-content, .attachment .widget_text .textwidget, .widget_text .attachment .textwidget, .attachment .maranatha-comment, .attachment .maranatha-nav-left-right, .maranatha-comment, #maranatha-comment-nav, #respond, #maranatha-comments-closed {
+    margin-top: 3.28125rem;
+  }
+
+  .maranatha-vertical-padding-top-medium {
+    padding-top: 3.28125rem;
+  }
+
+  .maranatha-vertical-margin-bottom-medium, .maranatha-entry-full .maranatha-entry-content-inner,
+  .archive #maranatha-content-inner > .maranatha-entry-content,
+  .archive #maranatha-content-inner > .maranatha-compact-content,
+  .archive .widget_text #maranatha-content-inner > .textwidget,
+  .widget_text .archive #maranatha-content-inner > .textwidget,
+  .archive #maranatha-content-inner > .maranatha-comment,
+  .blog #maranatha-content-inner > .maranatha-entry-content,
+  .blog #maranatha-content-inner > .maranatha-compact-content,
+  .blog .widget_text #maranatha-content-inner > .textwidget,
+  .widget_text .blog #maranatha-content-inner > .textwidget,
+  .blog #maranatha-content-inner > .maranatha-comment,
+  .search #maranatha-content-inner > .maranatha-entry-content,
+  .search #maranatha-content-inner > .maranatha-compact-content,
+  .search .widget_text #maranatha-content-inner > .textwidget,
+  .widget_text .search #maranatha-content-inner > .textwidget,
+  .search #maranatha-content-inner > .maranatha-comment, .maranatha-entry-full-header, .maranatha-entry-full-map, .maranatha-loop-one-column .maranatha-entry-short, #maranatha-sermon-media, #maranatha-sermon-index-header, #maranatha-calendar-list h3, #maranatha-calendar-list .maranatha-nav-block-title, .maranatha-attachment-image, #maranatha-comments-header, li:not(:last-child) #respond {
+    margin-bottom: 3.28125rem;
+  }
+
+  .maranatha-vertical-padding-bottom-medium {
+    padding-bottom: 3.28125rem;
+  }
+
+  .maranatha-vertical-margin-medium-content, blockquote, .gallery {
+    margin-top: 2.29688rem;
+    margin-bottom: 2.29688rem;
+  }
+
+  .maranatha-vertical-padding-medium-content {
+    padding-top: 2.29688rem;
+    padding-bottom: 2.29688rem;
+  }
+
+  .maranatha-vertical-margin-top-medium-content, .maranatha-home-section-content .maranatha-circle-buttons-list {
+    margin-top: 2.29688rem;
+  }
+
+  .maranatha-vertical-padding-top-medium-content {
+    padding-top: 2.29688rem;
+  }
+
+  .maranatha-vertical-margin-bottom-medium-content {
+    margin-bottom: 2.29688rem;
+  }
+
+  .maranatha-vertical-padding-bottom-medium-content {
+    padding-bottom: 2.29688rem;
+  }
+
+  .maranatha-vertical-margin-large {
+    margin-top: 4.6875rem;
+    margin-bottom: 4.6875rem;
+  }
+
+  .maranatha-vertical-padding-large, .maranatha-home-section-content {
+    padding-top: 4.6875rem;
+    padding-bottom: 4.6875rem;
+  }
+
+  .maranatha-vertical-margin-top-large, .maranatha-nav-blocks, .single .maranatha-author-box, #comments {
+    margin-top: 4.6875rem;
+  }
+
+  .maranatha-vertical-padding-top-large {
+    padding-top: 4.6875rem;
+  }
+
+  .maranatha-vertical-margin-bottom-large, #maranatha-content {
+    margin-bottom: 4.6875rem;
+  }
+
+  .maranatha-vertical-padding-bottom-large {
+    padding-bottom: 4.6875rem;
+  }
+
+  .maranatha-vertical-margin-large-content {
+    margin-top: 3.28125rem;
+    margin-bottom: 3.28125rem;
+  }
+
+  .maranatha-vertical-padding-large-content {
+    padding-top: 3.28125rem;
+    padding-bottom: 3.28125rem;
+  }
+
+  .maranatha-vertical-margin-top-large-content {
+    margin-top: 3.28125rem;
+  }
+
+  .maranatha-vertical-padding-top-large-content {
+    padding-top: 3.28125rem;
+  }
+
+  .maranatha-vertical-margin-bottom-large-content {
+    margin-bottom: 3.28125rem;
+  }
+
+  .maranatha-vertical-padding-bottom-large-content {
+    padding-bottom: 3.28125rem;
+  }
+
+  .maranatha-vertical-margin-medium-small-content, h1, .maranatha-h1, .maranatha-home-section-content h2, .maranatha-home-section-content .maranatha-h2, #maranatha-comments-title,
+  h2,
+  .maranatha-h2,
+  #reply-title,
+  h3,
+  .maranatha-nav-block-title,
+  h4,
+  h5,
+  h6 {
+    margin-top: 2.29688rem;
+    margin-bottom: 1.64063rem;
+  }
+
+  #maranatha-header-top {
+    padding: 1.875em 0;
+  }
+
+  .js #maranatha-header-menu-inner,
+  .js .sf-menu {
+    visibility: hidden;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  #maranatha-logo {
+    width: 100%;
+  }
+
+  #maranatha-logo-text {
+    white-space: normal;
+  }
+
+  #maranatha-header-menu {
+    padding-left: 0;
+  }
+
+  #maranatha-header-menu-content {
+    width: 45px;
+  }
+
+  #maranatha-logo-content {
+    font-size: 0.75em;
+  }
+
+  #maranatha-logo-image img {
+    max-height: 30px;
+  }
+
+  #maranatha-header-search {
+    display: none;
+  }
+
+  #maranatha-banner-title h1, #maranatha-banner-title .maranatha-h1, #maranatha-banner-title .maranatha-home-section-content h2, .maranatha-home-section-content #maranatha-banner-title h2, #maranatha-banner-title .maranatha-home-section-content .maranatha-h2, .maranatha-home-section-content #maranatha-banner-title .maranatha-h2, #maranatha-banner-title .maranatha-home-section-content #reply-title, .maranatha-home-section-content #maranatha-banner-title #reply-title, #maranatha-banner-title #maranatha-comments-title {
+    margin-top: 1.5em;
+    font-size: 2em;
+  }
+  .maranatha-has-logo-image #maranatha-banner-title h1, .maranatha-has-logo-image #maranatha-banner-title .maranatha-h1, .maranatha-has-logo-image #maranatha-banner-title .maranatha-home-section-content h2, .maranatha-home-section-content .maranatha-has-logo-image #maranatha-banner-title h2, .maranatha-has-logo-image #maranatha-banner-title .maranatha-home-section-content .maranatha-h2, .maranatha-home-section-content .maranatha-has-logo-image #maranatha-banner-title .maranatha-h2, .maranatha-has-logo-image #maranatha-banner-title .maranatha-home-section-content #reply-title, .maranatha-home-section-content .maranatha-has-logo-image #maranatha-banner-title #reply-title, .maranatha-has-logo-image #maranatha-banner-title #maranatha-comments-title {
+    margin-top: 2em;
+  }
+
+  #maranatha-home-section-1 .maranatha-home-section-content {
+    margin-top: 1.25em;
+  }
+
+  .maranatha-home-section-content h1, .maranatha-home-section-content .maranatha-h1, .maranatha-home-section-content h2, .maranatha-home-section-content .maranatha-h2, .maranatha-home-section-content #reply-title, .maranatha-home-section-content #maranatha-comments-title,
+  .maranatha-home-section-content h2,
+  .maranatha-home-section-content .maranatha-h2,
+  .maranatha-home-section-content #reply-title {
+    font-size: 2em;
+  }
+  .maranatha-home-section-content p {
+    font-size: 1.3em;
+  }
+
+  .maranatha-loop-two-columns#maranatha-loop-multiple,
+  .maranatha-loop-three-columns#maranatha-loop-multiple {
+    margin-bottom: 0;
+  }
+  .maranatha-loop-two-columns .maranatha-entry-short,
+  .maranatha-loop-three-columns .maranatha-entry-short {
+    float: none;
+    width: 100%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3.28125rem;
+  }
+  .maranatha-loop-two-columns .maranatha-entry-short:nth-last-of-type(-n+2),
+  .maranatha-loop-three-columns .maranatha-entry-short:nth-last-of-type(-n+2) {
+    margin-bottom: 3.28125rem;
+  }
+  .maranatha-loop-two-columns .maranatha-entry-short:last-child,
+  .maranatha-loop-three-columns .maranatha-entry-short:last-child {
+    margin-bottom: 0;
+  }
+  .maranatha-loop-two-columns .maranatha-entry-short h2, .maranatha-loop-two-columns .maranatha-entry-short .maranatha-h2, .maranatha-loop-two-columns .maranatha-entry-short #reply-title,
+  .maranatha-loop-three-columns .maranatha-entry-short h2,
+  .maranatha-loop-three-columns .maranatha-entry-short .maranatha-h2,
+  .maranatha-loop-three-columns .maranatha-entry-short #reply-title {
+    font-size: 1.9em;
+  }
+  .maranatha-loop-two-columns .maranatha-entry-short > *,
+  .maranatha-loop-two-columns .maranatha-entry-short .maranatha-entry-short-header > *,
+  .maranatha-loop-three-columns .maranatha-entry-short > *,
+  .maranatha-loop-three-columns .maranatha-entry-short .maranatha-entry-short-header > * {
+    margin-top: 1.375em;
+  }
+  .maranatha-loop-two-columns .maranatha-entry-short > *:first-child,
+  .maranatha-loop-two-columns .maranatha-entry-short .maranatha-entry-short-header > *:first-child,
+  .maranatha-loop-three-columns .maranatha-entry-short > *:first-child,
+  .maranatha-loop-three-columns .maranatha-entry-short .maranatha-entry-short-header > *:first-child {
+    margin-top: 0;
+  }
+  .maranatha-loop-two-columns .maranatha-entry-short-meta,
+  .maranatha-loop-two-columns .maranatha-entry-content-short,
+  .maranatha-loop-two-columns .maranatha-entry-short-footer,
+  .maranatha-loop-three-columns .maranatha-entry-short-meta,
+  .maranatha-loop-three-columns .maranatha-entry-content-short,
+  .maranatha-loop-three-columns .maranatha-entry-short-footer {
+    font-size: 1em;
+  }
+
+  #maranatha-sermon-download-dropdown {
+    margin-left: -3.875em !important;
+  }
+
+  .maranatha-sermon-index-list.maranatha-sermon-index-list-three-columns {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+  }
+
+  #maranatha-calendar-header-right {
+    position: relative;
+    top: -0.125em;
+  }
+
+  #maranatha-calendar-title {
+    font-size: 2em;
+  }
+
+  #maranatha-calendar-list {
+    display: block;
+  }
+
+  .maranatha-calendar-table-header-full {
+    display: none;
+  }
+
+  .maranatha-calendar-table-header-short {
+    display: inline-block;
+  }
+
+  .maranatha-calendar-table-day-label {
+    display: none;
+  }
+
+  .maranatha-calendar-table-day-has-events:not(.maranatha-calendar-table-day-past) span.maranatha-calendar-table-day-number {
+    display: none;
+  }
+
+  .maranatha-calendar-table-day-has-events:not(.maranatha-calendar-table-day-past) a.maranatha-calendar-table-day-number {
+    display: inline-block;
+  }
+
+  .maranatha-calendar-table-day-events {
+    display: none;
+  }
+
+  .maranatha-calendar-table-day-content-container {
+    padding: 0.9375em 0;
+    min-height: 0 !important;
+  }
+
+  .maranatha-calendar-table-day-heading {
+    margin: 0 0 0.125em 0;
+    font-size: 1.2em;
+    text-align: center;
+  }
+
+  .comment-edit-link {
+    display: none !important;
+  }
+
+  .maranatha-comment-buttons li {
+    margin-right: 0;
+  }
+
+  #respond input[type=text],
+  #respond input[type=email],
+  #respond input[type=url] {
+    position: relative;
+    left: 0;
+    width: 95%;
+  }
+
+  .comment-form-author label.error,
+  .comment-form-email label.error,
+  .comment-form-url label.error {
+    display: block;
+    width: 95%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: right;
+  }
+
+  .comment-form-author,
+  .comment-form-email,
+  .comment-form-url {
+    margin: 0.625em 0;
+  }
+}
+/*----------------------------------------------
+ * 640px
+ *---------------------------------------------*/
+@media only screen and (max-width: 640px) {
+  #maranatha-calendar-header-left,
+  #maranatha-calendar-header-right {
+    float: none;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  #maranatha-calendar-header-right a {
+    padding: 0 0.15625em;
+  }
+
+  #maranatha-calendar-title,
+  #maranatha-calendar-title span {
+    margin-left: 0.3125em;
+    margin-right: 0.3125em;
+  }
+
+  #maranatha-calendar-remove-category a {
+    top: -0.375em;
+  }
+
+  .maranatha-calendar-table-day-content-container {
+    padding: 0.5em 0;
+  }
+
+  #maranatha-calendar-list-heading {
+    text-align: center;
+  }
+}
+/*----------------------------------------------
+ * 540px
+ *---------------------------------------------*/
+@media only screen and (max-width: 540px) {
+  .alignleft,
+  .alignright {
+    display: block;
+    margin: 2.34375rem auto;
+    float: none;
+  }
+  .alignleft.wp-caption,
+  .alignright.wp-caption {
+    padding-top: 0.5em;
+  }
+
+  .gallery-caption {
+    display: none;
+  }
+
+  .gallery-columns-6 .gallery-item,
+  .gallery-columns-7 .gallery-item,
+  .gallery-columns-8 .gallery-item,
+  .gallery-columns-9 .gallery-item {
+    /* duplicate in style.css for 5 columns */
+    max-width: 20%;
+  }
+}
+/*----------------------------------------------
+ * 480px - Small Phone
+ *---------------------------------------------*/
+@media only screen and (max-width: 480px) {
+  .maranatha-nav-block-title {
+    font-size: 1.4em;
+  }
+
+  .maranatha-nav-left, .maranatha-nav-right,
+  .maranatha-nav-right {
+    float: none;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .maranatha-nav-left, .maranatha-nav-right {
+    margin-bottom: 0.9375em;
+  }
+
+  .maranatha-entry-full-icons {
+    position: relative;
+    top: -0.125em;
+  }
+
+  .maranatha-loop-one-column .maranatha-entry-short h2, .maranatha-loop-one-column .maranatha-entry-short .maranatha-h2, .maranatha-loop-one-column .maranatha-entry-short #reply-title,
+  .maranatha-loop-two-columns .maranatha-entry-short h2,
+  .maranatha-loop-two-columns .maranatha-entry-short .maranatha-h2,
+  .maranatha-loop-two-columns .maranatha-entry-short #reply-title,
+  .maranatha-loop-three-columns .maranatha-entry-short h2,
+  .maranatha-loop-three-columns .maranatha-entry-short .maranatha-h2,
+  .maranatha-loop-three-columns .maranatha-entry-short #reply-title {
+    font-size: 1.6em;
+  }
+  .maranatha-loop-one-column .maranatha-entry-short > *,
+  .maranatha-loop-one-column .maranatha-entry-short .maranatha-entry-short-header > *,
+  .maranatha-loop-two-columns .maranatha-entry-short > *,
+  .maranatha-loop-two-columns .maranatha-entry-short .maranatha-entry-short-header > *,
+  .maranatha-loop-three-columns .maranatha-entry-short > *,
+  .maranatha-loop-three-columns .maranatha-entry-short .maranatha-entry-short-header > * {
+    margin-top: 1.125em;
+  }
+  .maranatha-loop-one-column .maranatha-entry-short-footer,
+  .maranatha-loop-two-columns .maranatha-entry-short-footer,
+  .maranatha-loop-three-columns .maranatha-entry-short-footer {
+    font-size: 0.83em;
+  }
+
+  .maranatha-calendar-dropdown .maranatha-dropdown-panel,
+  .maranatha-calendar-dropdown .maranatha-dropdown-menu {
+    right: -3.75em !important;
+  }
+
+  .maranatha-calendar-table-header-short {
+    font-weight: normal;
+  }
+
+  .maranatha-calendar-table-day-content-container {
+    padding: 0.1875em 0;
+  }
+
+  .maranatha-calendar-table-day-heading {
+    font-size: 1.1em;
+  }
+
+  #maranatha-person-header-content,
+  #maranatha-person-image-column,
+  #maranatha-person-meta {
+    display: block;
+    text-align: center;
+    padding-left: 0;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  #maranatha-person-image {
+    margin: 0 auto;
+  }
+
+  .maranatha-person-has-image #maranatha-person-meta {
+    margin-top: 2.34375rem;
+    padding-left: 0;
+  }
+
+  .gallery-columns-4 .gallery-item,
+  .gallery-columns-5 .gallery-item,
+  .gallery-columns-6 .gallery-item,
+  .gallery-columns-7 .gallery-item,
+  .gallery-columns-8 .gallery-item,
+  .gallery-columns-9 .gallery-item {
+    /* duplicate in style.css for 3 columns */
+    max-width: 33.33333%;
+  }
+
+  .maranatha-comment-author span,
+  .maranatha-comment-trackback-link span {
+    display: none;
+  }
+
+  .maranatha-comment-buttons .el {
+    display: none;
+  }
+
+  .single-post .bypostauthor > article {
+    padding: 1.875em;
+  }
+}
+/*----------------------------------------------
+ * 400px
+ *---------------------------------------------*/
+@media only screen and (max-width: 400px) {
+  .maranatha-sermon-index-list.maranatha-sermon-index-list-two-columns, .maranatha-sermon-index-list.maranatha-sermon-index-list-three-columns {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+  }
+}
+/*----------------------------------------------
+ * 375px - Old Phone (iPhone 4/5 Portrait)
+ *---------------------------------------------*/
+@media only screen and (max-width: 374px) {
+  #maranatha-header-archives,
+  .maranatha-header-archive-dropdown {
+    display: none !important;
+  }
+
+  .maranatha-sermon-books-testament {
+    width: 100%;
+  }
+  .maranatha-sermon-books-testament:nth-child(odd) {
+    margin-right: 0;
+  }
+
+  .maranatha-galleries-list .gallery-item {
+    max-width: 100%;
+  }
+
+  .maranatha-comment,
+  .maranatha-comment #respond {
+    margin-left: 0;
+  }
+}
