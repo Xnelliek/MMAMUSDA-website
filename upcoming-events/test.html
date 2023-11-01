@@ -1,27 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Event Management System</title>
-  <link rel="stylesheet" href="events.css">
-  <script src="upcoming-events.js"></script>
+<title>Church Events</title>
 </head>
 <body>
-  <h1>Event Management System</h1>
-  <div id="content">
-    <h2>Events</h2>
-    <ul id="events"></ul>
-  </div>
-  <div id="edit-event-form">
-    <h2>Edit Event</h2>
-    <form action="events.php" method="post">
-      <input type="hidden" name="id" id="id">
-      <input type="text" name="name" id="name" placeholder="Event Name">
-      <textarea name="description" id="description" placeholder="Event Description"></textarea>
-      <input type="datetime-local" name="startTime" id="startTime" placeholder="Start Time">
-      <input type="datetime-local" name="endTime" id="endTime" placeholder="End Time">
-      <input type="text" name="location" id="location" placeholder="Event Location">
-      <input type="submit" value="Update Event">
-    </form>
-  </div>
+<h1>Church Events</h1>
+
+<form action="insert_event.php" method="post">
+<input type="text" name="name" placeholder="Event name">
+<input type="text" name="description" placeholder="Event description">
+<input type="date" name="start_date" placeholder="Start date">
+<input type="date" name="end_date" placeholder="End date">
+<input type="text" name="location" placeholder="Location">
+<input type="submit" value="Submit">
+</form>
+
 </body>
 </html>
