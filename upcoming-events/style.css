@@ -1,0 +1,48 @@
+body {
+    font-family: sans-serif;
+    margin: 20px;
+  }
+  
+  .events-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly; /* Distribute events evenly horizontally */
+  }
+  
+  .event {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: relative; /* Enables hover effects */
+    background-color: white;
+    transition: all 0.2s ease-in-out; /* Smooth zoom and color change on hover */
+  }
+  
+  .event:hover {
+    background-color: lightblue;
+    transform: scale(1.1); /* Zoom-out on hover */
+  }
+  
+  .event__image {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    transform: translateX(-50%); /* Center image horizontally */
+    width: 80px; /* Adjust image size as needed */
+  }
+  
+  .event__date {
+    font-weight: bold;
+  }
+  
+  .event__title {
+    font-size: 1.2em;
+  }
+  
+  .event__description {
+    font-size: 0.9em;
+  }
+  

@@ -394,22 +394,53 @@ jQuery( 'html' )
 <!---->
 <main id="maranatha-home-main">
 
-	
-	
 	<section id="maranatha-home-section-1" class="maranatha-home-section maranatha-viewport-height maranatha-color-main-bg maranatha-section-has-title maranatha-section-has-content maranatha-section-has-image">
-		<div class="maranatha-home-section-image"></div>
-		<div class="maranatha-home-section-inner">
-		  <div class="maranatha-home-section-content">
-			<h1>Shining Light in NAROK County</h1>
-			<h2 style="text-align: center"><strong>Upcoming Events</strong></h2>
-			<h3 style="text-align: center;color: white">Sabbath school and church service will be at our normal times of 9:30am and 11:00am. The livestream of the church service will start at 11:00am.</h3>
-			<ul class="maranatha-circle-buttons-list">
-			  <li><a href="what-to-expect/index.html">What to Expect</a></li>
-			</ul>
-		  </div>
-		  <span title="Scroll Down" id="maranatha-home-header-arrow" class="el el-chevron-down"></span>
-		</div>
-	  </section>
+    <div class="maranatha-home-section-image"></div>
+    <div class="maranatha-home-section-inner">
+        <div class="maranatha-home-section-content">
+            <h1>Shining Light in NAROK County</h1>
+            <h2 style="text-align: center"><strong>Upcoming Events</strong></h2>
+            <h3 style="text-align: center;color: white">Sabbath school and church service will be at our normal times of 9:30am and 11:00am. The livestream of the church service will start at 11:00am.</h3>
+            <ul class="maranatha-circle-buttons-list">
+                <li><a href="what-to-expect/index.html">What to Expect</a></li>
+            </ul>
+        </div>
+        <span title="Scroll Down" id="maranatha-home-header-arrow" class="el el-chevron-down"></span>
+    </div>
+    <script>
+        // Define an array of image sources
+        var imageSources = [
+          'wp-content/uploads/2016/04/image1.jpg',
+          'wp-content/uploads/2016/04/image3.jpg',
+          'wp-content/uploads/2016/04/image4.jpg',
+          'wp-content/uploads/2016/04/image5.jpg',
+          'wp-content/uploads/2016/04/image7.jpg',
+          'wp-content/uploads/2016/04/image6.jpg'
+        ];
+        
+        // Get the slideshow container element for this section
+        var slideshowContainer = document.querySelector('#maranatha-home-section-1 .maranatha-home-section-image');
+        var currentIndex = 0;
+        
+        // Function to change the background image of the slideshow container
+        function changeBackgroundImage() {
+          // Set the background image with a sliding effect
+          slideshowContainer.style.transition = 'background-image 1s ease-in-out';
+          slideshowContainer.style.backgroundImage = 'url(' + imageSources[currentIndex] + ')';
+          
+          // Increment the current index or loop back to the beginning
+          currentIndex = (currentIndex + 1) % imageSources.length;
+        }
+        
+        // Call the function initially to set the background image
+        changeBackgroundImage();
+        
+        // Call the function periodically to change the background image
+        setInterval(changeBackgroundImage, 3000); // Change image every 3 seconds
+    </script>
+</section>
+
+
 	  
 	
 
@@ -612,40 +643,6 @@ Worship Service:&nbsp;&nbsp;Sabbath, 10:00am &#8211; 01:00pm								</p>
 
 </section>
 
-  <script>
-// Define an array of image sources
-var imageSources = [
-  '/MyWebsite/MAMUSDA/wp-content/uploads/2016/04/image1.jpg',
-  '/MyWebsite/MAMUSDA/wp-content/uploads/2016/04/image3.jpg',
-  '/MyWebsite/MAMUSDA/wp-content/uploads/2016/04/image4.jpg',
-  '/MyWebsite/MAMUSDA/wp-content/uploads/2016/04/image5.jpg',
-  '/MyWebsite/MAMUSDA/wp-content/uploads/2016/04/image7.jpg',
-  '/MyWebsite/MAMUSDA/wp-content/uploads/2016/04/image6.jpg'
-];
-
-// Get the slideshow container element
-var slideshowContainer = document.querySelector('.maranatha-home-section-image');
-var currentIndex = 0;
-
-// Function to change the background image of the slideshow container
-function changeBackgroundImage() {
-  // Set the background image with a sliding effect
-  slideshowContainer.style.transition = 'background-image 1s ease-in-out';
-  slideshowContainer.style.backgroundImage = 'url(' + imageSources[currentIndex] + ')';
-  
-  // Increment the current index or loop back to the beginning
-  currentIndex = (currentIndex + 1) % imageSources.length;
-}
-
-// Call the function initially to set the background image
-changeBackgroundImage();
-
-// Call the function periodically to change the background image
-setInterval(changeBackgroundImage, 3000); // Change image every 2 seconds
-
-  </script>
-  
-	
 </main>
 
 <footer id="maranatha-footer" class="maranatha-footer-no-location maranatha-footer-no-map maranatha-footer-no-icons maranatha-footer-has-notice">
